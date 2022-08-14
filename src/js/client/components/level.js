@@ -1,6 +1,6 @@
 export function levelComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const { mode } = state.levels[ state.activeLevel ];
+  const { enemies, mode } = state.levels[ state.activeLevel ];
 
   const height = element.dataset.height;
   const width = element.dataset.width;
@@ -11,7 +11,7 @@ export function levelComponent (targetElement, state) {
   element.innerHTML = `
     <rect x="0" y="0" height="${height}" width="${width}" fill="${fill}" />
     <g id="pathway" data-component="pathway" data-stroke="${stroke}"></g>
-    <g id="enemies" data-component="enemies"></g>
+    <g id="enemies" data-component="enemies" data-enemies="${enemies.length}"></g>
     <g id="towers" data-component="towers" data-stroke="${stroke}"></g>
   `;
 

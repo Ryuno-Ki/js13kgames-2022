@@ -6,7 +6,9 @@ import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
 import { wrapperComponent } from './components/wrapper.js';
 
+import { canvasComponent } from './components/canvas.js';
 import { enemiesComponent } from './components/enemies.js';
+import { formComponent } from './components/form.js';
 import { levelComponent } from './components/level.js';
 import { pathwayComponent } from './components/pathway.js';
 import { towersComponent } from './components/towers.js';
@@ -20,7 +22,9 @@ import { step } from './render.js';
 
 export function init () {
   add('about-scene', aboutSceneComponent);
+  add('canvas', canvasComponent);
   add('enemies', enemiesComponent);
+  add('form', formComponent);
   add('game-over-scene', gameOverSceneComponent);
   add('level', levelComponent);
   add('pathway', pathwayComponent);

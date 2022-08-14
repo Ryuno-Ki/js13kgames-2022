@@ -1,12 +1,19 @@
-import { ACTION_NAVIGATE_TO_SCENE } from '../../../shared/constants.js';
+import { ACTION_ADD_ENEMY, ACTION_NAVIGATE_TO_SCENE } from '../../../shared/constants.js';
+import { addEnemy } from './add-enemy.js';
 import { navigateToScene } from './navigate-to-scene.js';
 
 const initialState = {
   activeLevel: 0,
   activeScene: 'title-scene',
+  enemies: {
+    death: [ '🪔', '🕯️', '📿','👼', '😇', '🎋' ],
+    // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
+    life: [ '🦇', '🕷️', '💀', '👺', '👹', '👻'],
+  },
   levels: [{
     mode: 'death',
-    enemies: '💀👺👹👻',
+    maxEnemies: 5,
+    enemies: [],
     pathway: [
       [   0,  50 ],
       [  30,  50 ],
@@ -31,6 +38,8 @@ export function reducer (state, action) {
 	}
 
 	switch (action.type) {
+    case ACTION_ADD_ENEMY:
+  return addEnemy(state, action.payload);
     case ACTION_NAVIGATE_TO_SCENE:
       return navigateToScene(state, action.payload);
 		default:
