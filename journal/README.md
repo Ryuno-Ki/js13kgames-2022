@@ -9,3 +9,4 @@ of the game.
 ## Entries
 
 - [13th August 2022](./2022-08-13.md)
+- [14th August 2022](./2022-08-14.md)
