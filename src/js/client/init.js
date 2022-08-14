@@ -6,6 +6,11 @@ import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
 import { wrapperComponent } from './components/wrapper.js';
 
+import { enemiesComponent } from './components/enemies.js';
+import { levelComponent } from './components/level.js';
+import { pathwayComponent } from './components/pathway.js';
+import { towersComponent } from './components/towers.js';
+
 import { onChange } from './on-change';
 import { onClick } from './on-click';
 import { onKeydown } from './on-keydown';
@@ -15,10 +20,14 @@ import { step } from './render.js';
 
 export function init () {
   add('about-scene', aboutSceneComponent);
+  add('enemies', enemiesComponent);
   add('game-over-scene', gameOverSceneComponent);
+  add('level', levelComponent);
+  add('pathway', pathwayComponent);
   add('new-game-scene', newGameSceneComponent);
   add('settings-scene', settingsSceneComponent);
   add('title-scene', titleSceneComponent);
+  add('towers', towersComponent);
   add('win-scene', winSceneComponent);
   add('wrapper', wrapperComponent);
 
