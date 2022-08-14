@@ -1,5 +1,11 @@
 export function gameOverSceneComponent (targetElement, state) {
 	const element = targetElement.cloneNode(true);
-	element.innerHTML = 'Game over scene';
+
+  if (state.activeScene !== 'game-over-scene') {
+    element.innerHTML = '';
+  } else {
+	  element.innerHTML = 'Game over scene';
+  }
+
 	return element;
 }

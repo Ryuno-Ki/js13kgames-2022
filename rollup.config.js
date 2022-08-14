@@ -18,19 +18,18 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.`
 
 const client = {
-	input: './src/js/client/app.js',
-	output: {
-		file: './public/client.js',
-		format: 'iife',
-		// TODO: Rename once decided
-		name: 'game',
-	},
-	plugins: [
-		terser(),
-		license({
-			banner: LICENSE_HEADER,
-		}),
-	],
+  input: './src/js/client/app.js',
+  output: {
+    file: './public/client.js',
+    format: 'iife',
+    name: 'ldtd',
+  },
+  plugins: [
+    terser(),
+    license({
+      banner: LICENSE_HEADER,
+    }),
+  ],
 };
 
 export default [client];

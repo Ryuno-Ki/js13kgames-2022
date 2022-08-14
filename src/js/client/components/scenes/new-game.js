@@ -1,5 +1,11 @@
 export function newGameSceneComponent (targetElement, state) {
 	const element = targetElement.cloneNode(true);
-	element.innerHTML = 'New game scene';
+
+  if (state.activeScene !== 'new-game-scene') {
+    element.innerHTML = '';
+  } else {
+	  element.innerHTML = 'New game scene';
+  }
+
 	return element;
 }

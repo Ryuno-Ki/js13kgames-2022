@@ -1,5 +1,11 @@
 export function winSceneComponent (targetElement, state) {
 	const element = targetElement.cloneNode(true);
-	element.innerHTML = 'Win scene';
+
+  if (state.activeScene !== 'win-scene') {
+    element.innerHTML = '';
+  } else {
+	  element.innerHTML = 'Win scene';
+  }
+
 	return element;
 }

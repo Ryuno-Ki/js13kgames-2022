@@ -1,0 +1,1 @@
+export const ACTION_NAVIGATE_TO_SCENE = 'NAV';

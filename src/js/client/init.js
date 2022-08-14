@@ -20,7 +20,7 @@ export function init () {
   add('settings-scene', settingsSceneComponent);
   add('title-scene', titleSceneComponent);
   add('win-scene', winSceneComponent);
-	add('wrapper', wrapperComponent);
+  add('wrapper', wrapperComponent);
 
   step();
 

@@ -12,6 +12,5 @@ export function step () {
 
 	const newMain = componentRegistry.render(main, store.getState());
   applyToDOM(document.body, main, newMain);
-	console.log('DOM', newMain.outerHTML);
 	requestAnimationFrame(step);
 }
