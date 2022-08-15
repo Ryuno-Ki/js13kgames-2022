@@ -1,6 +1,6 @@
 import { aboutSceneComponent } from './components/scenes/about.js';
 import { gameOverSceneComponent } from './components/scenes/game-over.js';
-import { newGameSceneComponent } from './components/scenes/level.js';
+import { levelSceneComponent } from './components/scenes/level.js';
 import { settingsSceneComponent } from './components/scenes/settings.js';
 import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
@@ -27,8 +27,8 @@ export function init () {
   add('form', formComponent);
   add('game-over-scene', gameOverSceneComponent);
   add('level', levelComponent);
+  add('level-scene', levelSceneComponent);
   add('pathway', pathwayComponent);
-  add('new-game-scene', newGameSceneComponent);
   add('settings-scene', settingsSceneComponent);
   add('title-scene', titleSceneComponent);
   add('towers', towersComponent);

@@ -1,7 +1,7 @@
-export function newGameSceneComponent (targetElement, state) {
+export function levelSceneComponent (targetElement, state) {
 	const element = targetElement.cloneNode(true);
 
-  if (state.activeScene !== 'new-game-scene') {
+  if (state.activeScene !== 'level-scene') {
     element.innerHTML = '';
   } else {
     element.innerHTML = `

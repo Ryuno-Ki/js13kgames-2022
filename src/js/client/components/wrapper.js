@@ -4,7 +4,7 @@ export function wrapperComponent (targetElement, state) {
   const scenes = [
     'about',
     'game-over',
-    'new-game',
+    'level',
     'settings',
     'title',
     'win'
