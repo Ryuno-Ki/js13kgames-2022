@@ -1,4 +1,4 @@
-export function wrapperComponent (targetElement, state) {
+export function wrapperComponent (targetElement) {
   const element = targetElement.cloneNode(true);
 
   const scenes = [
