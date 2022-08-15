@@ -1,6 +1,8 @@
+import { pickLevel } from './helper.js';
+
 export function levelComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const { enemies, mode } = state.levels[ state.activeLevel ];
+  const { enemies, mode } = pickLevel(state);
 
   const height = element.dataset.height;
   const width = element.dataset.width;

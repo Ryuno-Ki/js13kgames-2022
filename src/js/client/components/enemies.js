@@ -1,9 +1,8 @@
-import { mapCoordinatesToPath } from './helper.js';
+import { mapCoordinatesToPath, pickLevel } from './helper.js';
 
 export function enemiesComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const level = state.levels[ state.activeLevel ];
-  const { enemies, pathway } = level;
+  const { enemies, pathway } = pickLevel(state);
   const path = mapCoordinatesToPath(pathway);
 
   element.innerHTML = `

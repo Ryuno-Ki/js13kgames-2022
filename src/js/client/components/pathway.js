@@ -1,11 +1,10 @@
-import { mapCoordinatesToPath } from './helper.js';
+import { mapCoordinatesToPath, pickLevel } from './helper.js';
 
 export function pathwayComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
   const stroke = element.dataset.stroke;
 
-  const level = state.levels[ state.activeLevel ];
-  const { pathway } = level;
+  const { pathway } = pickLevel(state);
   const path = mapCoordinatesToPath(pathway);
 
   element.innerHTML = `
