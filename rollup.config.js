@@ -17,6 +17,10 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.`
 
+const plugins = process.env.NODE_ENV === 'development'
+  ? []
+  : [ terser(), license({ banner: LICENSE_HEADER }) ];
+
 const client = {
   input: './src/js/client/app.js',
   output: {
@@ -24,12 +28,7 @@ const client = {
     format: 'iife',
     name: 'ldtd',
   },
-  plugins: [
-    terser(),
-    license({
-      banner: LICENSE_HEADER,
-    }),
-  ],
+  plugins,
 };
 
 export default [client];

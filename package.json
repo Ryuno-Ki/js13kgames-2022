@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
+    "build:dev": "NODE_ENV=development rollup -c",
     "postbuild": "yarn zip",
     "test": "mocha --recursive",
     "zip": "node ./scripts/zip-and-check.cjs"
