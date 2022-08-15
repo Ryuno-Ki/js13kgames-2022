@@ -18,6 +18,25 @@ const initialState = {
     life: [ '🦇', '🕷️', '💀', '👺', '👹', '👻'],
   },
   levels: [{
+    mode: 'life',
+    maxEnemies: 3,
+    enemies: [],
+    pathway: [
+      [   0,  50 ],
+      [  30,  50 ],
+      [  30,  70 ],
+      [  70,  70 ],
+      [  70,  50 ],
+      [ 100,  50 ]
+    ],
+    towers: [{
+      position: [  30,  44 ],
+      type: null,
+    }, {
+      position: [  36,  50 ],
+      type: null,
+    }],
+  }, {
     mode: 'death',
     maxEnemies: 5,
     enemies: [],
