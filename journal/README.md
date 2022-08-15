@@ -10,3 +10,4 @@ of the game.
 
 - [13th August 2022](./2022-08-13.md)
 - [14th August 2022](./2022-08-14.md)
+- [15th August 2022](./2022-08-15.md)
