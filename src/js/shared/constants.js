@@ -1,4 +1,5 @@
 export const ACTION_ADD_ENEMY = 'ADD_ENEMY';
+export const ACTION_CHOOSE_LEVEL = 'LEVEL';
 export const ACTION_CHOOSE_PARTY = 'PARTY';
 export const ACTION_NAVIGATE_TO_SCENE = 'NAV';
 export const ACTION_SET_NICKAME = 'NICKNAME';

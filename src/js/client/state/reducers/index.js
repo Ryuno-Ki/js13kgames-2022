@@ -1,16 +1,18 @@
 import {
   ACTION_ADD_ENEMY,
+  ACTION_CHOOSE_LEVEL,
   ACTION_CHOOSE_PARTY,
   ACTION_NAVIGATE_TO_SCENE,
   ACTION_SET_NICKAME
 } from '../../../shared/constants.js';
 import { addEnemy } from './add-enemy.js';
-import {chooseParty} from './choose-party.js';
+import { chooseLevel } from './choose-level.js';
+import { chooseParty } from './choose-party.js';
 import { navigateToScene } from './navigate-to-scene.js';
-import {setNickname} from './set-nickname.js';
+import { setNickname } from './set-nickname.js';
 
 const initialState = {
-  activeLevel: 0,
+  activeLevel: null,
   activeScene: 'title-scene',
   enemies: {
     death: [ '🪔', '🕯️', '📿','👼', '😇', '🎋' ],
@@ -70,6 +72,8 @@ export function reducer (state, action) {
   switch (action.type) {
     case ACTION_ADD_ENEMY:
       return addEnemy(state, action.payload);
+    case ACTION_CHOOSE_LEVEL:
+      return chooseLevel(state, action.payload);
     case ACTION_CHOOSE_PARTY:
       return chooseParty(state, action.payload);
     case ACTION_NAVIGATE_TO_SCENE:
