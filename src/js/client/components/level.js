@@ -2,10 +2,7 @@ import { pickLevel } from './helper.js';
 
 export function levelComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const { enemies, mode } = pickLevel(state);
-
-  const height = element.dataset.height;
-  const width = element.dataset.width;
+  const { enemies, height, mode, width } = pickLevel(state);
 
   const fill = mode === 'death' ? 'black' : 'white';
   const stroke = mode === 'death' ? 'white' : 'black';

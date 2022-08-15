@@ -1,7 +1,8 @@
-export function canvasComponent (targetElement) {
+import { pickLevel } from './helper.js';
+
+export function canvasComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const height = 320;
-  const width = 320;
+  const { height, width } = pickLevel(state);
 
   element.innerHTML = `
     <svg
@@ -20,12 +21,7 @@ export function canvasComponent (targetElement) {
           font-size: 0.5em;
         }
       </style>
-      <g
-        id="level"
-        data-component="level"
-        data-height="${height}"
-        data-width="${width}"
-      >
+      <g id="level" data-component="level">
       </g>
     </svg>
   `;
