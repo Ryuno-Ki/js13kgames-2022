@@ -5,6 +5,7 @@ export function wrapperComponent (targetElement, state) {
     'about',
     'game-over',
     'level',
+    'new-game',
     'settings',
     'title',
     'win'

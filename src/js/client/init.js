@@ -1,6 +1,7 @@
 import { aboutSceneComponent } from './components/scenes/about.js';
 import { gameOverSceneComponent } from './components/scenes/game-over.js';
 import { levelSceneComponent } from './components/scenes/level.js';
+import { newGameSceneComponent } from './components/scenes/new-game.js';
 import { settingsSceneComponent } from './components/scenes/settings.js';
 import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
@@ -28,6 +29,7 @@ export function init () {
   add('game-over-scene', gameOverSceneComponent);
   add('level', levelComponent);
   add('level-scene', levelSceneComponent);
+  add('new-game-scene', newGameSceneComponent);
   add('pathway', pathwayComponent);
   add('settings-scene', settingsSceneComponent);
   add('title-scene', titleSceneComponent);
