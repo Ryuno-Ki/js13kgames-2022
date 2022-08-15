@@ -1,10 +1,9 @@
 import { aboutSceneComponent } from './components/scenes/about.js';
 import { gameOverSceneComponent } from './components/scenes/game-over.js';
-import { newGameSceneComponent } from './components/scenes/new-game.js';
+import { newGameSceneComponent } from './components/scenes/level.js';
 import { settingsSceneComponent } from './components/scenes/settings.js';
 import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
-import { wrapperComponent } from './components/wrapper.js';
 
 import { canvasComponent } from './components/canvas.js';
 import { enemiesComponent } from './components/enemies.js';
@@ -12,6 +11,7 @@ import { formComponent } from './components/form.js';
 import { levelComponent } from './components/level.js';
 import { pathwayComponent } from './components/pathway.js';
 import { towersComponent } from './components/towers.js';
+import { wrapperComponent } from './components/wrapper.js';
 
 import { onChange } from './on-change';
 import { onClick } from './on-click';
