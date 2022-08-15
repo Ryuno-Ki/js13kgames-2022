@@ -1,11 +1,13 @@
 export function formComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
+  const { nickname, party } = state.player;
   const level = state.levels[ state.activeLevel ];
   const enemies = state.enemies[ level.mode ];
   const maxEnemies = level.maxEnemies;
 
   element.innerHTML = `
     <h2>Level ${state.activeLevel + 1}</h2>
+    <p>${nickname} plays for ${party}.</p>
     ${level.enemies.length >= maxEnemies ? '' : `
       <div class="actions">
         ${enemies.map((enemy) => {
