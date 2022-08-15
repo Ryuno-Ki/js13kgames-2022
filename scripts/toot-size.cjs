@@ -20,7 +20,7 @@ module.exports = async function run (sz) {
   // See https://neet.github.io/masto.js/modules.html#StatusVisibility
   await masto.statuses.create({
     status: toot,
-    visibility: 'direct',
+    visibility: 'unlisted',
   });
  
   console.log(toot);;
