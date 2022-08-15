@@ -1,5 +1,6 @@
 export function newGameSceneComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
+
   if (state.activeScene !== 'new-game-scene') {
     element.innerHTML = '';
   } else {
@@ -41,13 +42,36 @@ export function newGameSceneComponent (targetElement, state) {
         </select>
       </div>
       <nav class="actions">
-        ${nickname && party ? `
-          <button type="button" data-navigate="level-scene">Start game</button>
-        ` : ''}
+        ${!isReadyForPlay(state) ? '' : `
+          <button type="button" data-navigate="level-scene">Start game</button>}
+        `}
         <button type="button" data-navigate="title-scene">Back to title</button>
       </nav>
     `;
   }
 
   return element;
+}
+
+function isReadyForPlay (state) {
+  const { activeLevel } = state;
+  const { nickname, party } = state.player;
+
+  if (!nickname) {
+    return false;
+  }
+
+  if (!party) {
+    return false;
+  }
+
+  if (activeLevel === null) {
+    return false;
+  }
+
+  if (activeLevel === '') {
+    return false;
+  }
+
+  return true;
 }
