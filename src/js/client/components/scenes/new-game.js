@@ -1,16 +1,16 @@
 export function newGameSceneComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const { nickname, party } = state.player;
-  const levels = state.levels.map((level, index) => {
-    return {
-      label: `Level ${index + 1} (${level.mode})`,
-      value: index,
-    };
-  });
-
   if (state.activeScene !== 'new-game-scene') {
     element.innerHTML = '';
   } else {
+    const { nickname, party } = state.player;
+    const levels = state.levels.map((level, index) => {
+      return {
+        label: `Level ${index + 1} (${level.mode})`,
+        value: index,
+      };
+    });
+
     element.innerHTML = `
       <h2>New game</h2>
       <div>
@@ -34,7 +34,7 @@ export function newGameSceneComponent (targetElement, state) {
           Which level do you want to play?
         </label>
         <select id="activeLevel">
-          <option>Please choose</option>
+          <option value="">Please choose</option>
           ${levels.map((level) => {
             return `<option value="${level.value}">${level.label}</option>`;
           }).join('')}
