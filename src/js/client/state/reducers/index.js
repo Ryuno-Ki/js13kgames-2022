@@ -1,14 +1,20 @@
 import {
   ACTION_ADD_ENEMY,
+  ACTION_ADD_PATHWAY_COORDINATE,
   ACTION_CHOOSE_LEVEL,
   ACTION_CHOOSE_PARTY,
   ACTION_NAVIGATE_TO_SCENE,
+  ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES,
+  ACTION_SET_DRAFT_LEVEL_MODE,
   ACTION_SET_NICKAME
 } from '../../../shared/constants.js';
 import { addEnemy } from './add-enemy.js';
+import { addPathwayCoordinate } from './add-pathway-coordinate.js';
 import { chooseLevel } from './choose-level.js';
 import { chooseParty } from './choose-party.js';
 import { navigateToScene } from './navigate-to-scene.js';
+import { setDraftLevelMaxEnemies } from './set-draft-level-max-enemies.js';
+import { setDraftLevelMode } from './set-draft-level-mode.js';
 import { setNickname } from './set-nickname.js';
 
 const initialState = {
@@ -19,7 +25,18 @@ const initialState = {
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
     life: [ '🦇', '🕷️', '💀', '👺', '👹', '👻'],
   },
+  levelDraft: {
+    height: 320,
+    width: 320,
+    mode: null,
+    maxEnemies: null,
+    enemies: [],
+    pathway: [],
+    towers: []
+  },
   levels: [{
+    height: 320,
+    width: 320,
     mode: 'life',
     maxEnemies: 3,
     enemies: [],
@@ -39,6 +56,8 @@ const initialState = {
       type: null,
     }],
   }, {
+    height: 320,
+    width: 320,
     mode: 'death',
     maxEnemies: 5,
     enemies: [],
@@ -72,12 +91,18 @@ export function reducer (state, action) {
   switch (action.type) {
     case ACTION_ADD_ENEMY:
       return addEnemy(state, action.payload);
+    case ACTION_ADD_PATHWAY_COORDINATE:
+      return addPathwayCoordinate(state, action.payload);
     case ACTION_CHOOSE_LEVEL:
       return chooseLevel(state, action.payload);
     case ACTION_CHOOSE_PARTY:
       return chooseParty(state, action.payload);
     case ACTION_NAVIGATE_TO_SCENE:
       return navigateToScene(state, action.payload);
+    case ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES:
+      return setDraftLevelMaxEnemies(state, action.payload);
+    case ACTION_SET_DRAFT_LEVEL_MODE:
+      return setDraftLevelMode(state, action.payload);
     case ACTION_SET_NICKAME:
       return setNickname(state, action.payload);
     default:

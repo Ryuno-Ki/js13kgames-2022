@@ -8,6 +8,7 @@ export function levelEditorSceneComponent (targetElement, state) {
       { label: 'Death', value: 'death' },
       { label: 'Life',  value: 'life'  }
     ];
+    const { mode } = state.levelDraft;
 
     element.innerHTML = `
       <h2>Level Editor</h2>
@@ -28,10 +29,12 @@ export function levelEditorSceneComponent (targetElement, state) {
         </label>
         <input id="maxEnemies" type="number" min="1" step="1" value="5" />
       </div>
-      <div>
-        TODO: Click for pathway and towers
-        <section data-component="canvas"></section>
-      </div>
+      ${mode === null ? '' : `
+        <div>
+          TODO: Click for towers
+          <section data-component="canvas"></section>
+        </div>
+      `}
       <nav class="actions">
         <button type="button" data-navigate="title-scene">Back to title</button>
       </nav>
