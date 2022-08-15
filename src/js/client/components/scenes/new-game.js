@@ -40,11 +40,12 @@ export function newGameSceneComponent (targetElement, state) {
           }).join('')}
         </select>
       </div>
-      ${nickname && party ? `
-        <nav class="actions">
+      <nav class="actions">
+        ${nickname && party ? `
           <button type="button" data-navigate="level-scene">Start game</button>
-        </nav>
-      ` : ''}
+        ` : ''}
+        <button type="button" data-navigate="title-scene">Back to title</button>
+      </nav>
     `;
   }
 
