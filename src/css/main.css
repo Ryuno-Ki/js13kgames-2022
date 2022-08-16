@@ -1,5 +1,22 @@
 html,
 body {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: grid;
+  min-height: 95vh;
+  place-items: center;
+}
+
+[data-component="level-scene"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+[data-component="level-scene"] section {
+  flex: 1 1 35%;
 }

@@ -1,3 +1,5 @@
+import '../../../css/main.css';
+
 export function wrapperComponent (targetElement) {
   const element = targetElement.cloneNode(true);
 
