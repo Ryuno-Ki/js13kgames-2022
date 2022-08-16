@@ -1,5 +1,6 @@
-import license from 'rollup-plugin-license'
-import { terser } from 'rollup-plugin-terser'
+import css from 'rollup-plugin-css-only';
+import license from 'rollup-plugin-license';
+import { terser } from 'rollup-plugin-terser';
 
 const LICENSE_HEADER = `This file is part of JS13kGames - DEATH.
 Copyright (C) 2022  André Jaenisch
@@ -15,11 +16,11 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.`
+along with this program.  If not, see <https://www.gnu.org/licenses/>.`;
 
 const plugins = process.env.NODE_ENV === 'development'
-  ? []
-  : [ terser(), license({ banner: LICENSE_HEADER }) ];
+	? [ css({ output: 'main.css' }) ]
+	: [ css({ output: 'main.css' }), terser(), license({ banner: LICENSE_HEADER }) ];
 
 const client = {
   input: './src/js/client/app.js',
