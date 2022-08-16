@@ -1,5 +1,7 @@
 import { init } from './init.js';
 
-export function app () {
+function app () {
 	window.addEventListener('load', init, false);
 }
+
+app();
