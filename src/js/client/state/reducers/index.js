@@ -6,7 +6,8 @@ import {
   ACTION_NAVIGATE_TO_SCENE,
   ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES,
   ACTION_SET_DRAFT_LEVEL_MODE,
-  ACTION_SET_NICKAME
+  ACTION_SET_NICKAME,
+  ACTION_UPDATE_POSITIONS
 } from '../../../shared/constants.js';
 import { addEnemy } from './add-enemy.js';
 import { addPathwayCoordinate } from './add-pathway-coordinate.js';
@@ -16,6 +17,7 @@ import { navigateToScene } from './navigate-to-scene.js';
 import { setDraftLevelMaxEnemies } from './set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './set-draft-level-mode.js';
 import { setNickname } from './set-nickname.js';
+import { updatePositions } from './update-positions.js';
 
 const initialState = {
   activeLevel: null,
@@ -35,6 +37,7 @@ const initialState = {
     towers: []
   },
   levels: [{
+    begin: null,
     height: 320,
     width: 320,
     mode: 'life',
@@ -56,6 +59,7 @@ const initialState = {
       type: null,
     }],
   }, {
+    begin: null,
     height: 320,
     width: 320,
     mode: 'death',
@@ -105,6 +109,8 @@ export function reducer (state, action) {
       return setDraftLevelMode(state, action.payload);
     case ACTION_SET_NICKAME:
       return setNickname(state, action.payload);
+    case ACTION_UPDATE_POSITIONS:
+      return updatePositions(state, action.payload);
     default:
       return state;
   }

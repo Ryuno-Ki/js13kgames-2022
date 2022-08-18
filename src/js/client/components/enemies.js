@@ -1,19 +1,14 @@
-import { mapCoordinatesToPath, pickLevel } from './helper.js';
+import { pickLevel } from './helper.js';
 
 export function enemiesComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
-  const { enemies, pathway } = pickLevel(state);
-  const path = mapCoordinatesToPath(pathway);
+  const { enemies } = pickLevel(state);
 
   element.innerHTML = `
     ${enemies.map((enemy) => {
-      return `<text>
-        <textPath path="${path}">
-          ${enemy}
-          <animate attributeName="startOffset" from="-100%" to="200%" begin="0s" dur="5s" repeatCount="1" />
-        </textPath>
-      </text>
-    `
+      const [ x, y ] = enemy.position;
+
+      return `<text x="${x}" y="${y}">${enemy.icon}</text>`;
     }).join('')}
   `;
 

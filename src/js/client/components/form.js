@@ -9,6 +9,7 @@ export function formComponent (targetElement, state) {
   element.innerHTML = `
     <h2>Level ${state.activeLevel + 1}</h2>
     <p>${nickname} plays for ${party}.</p>
+
     ${enemies.length >= maxEnemies ? '' : `
       <div class="actions">
         ${partyEnemies.map((enemy) => {
@@ -18,7 +19,7 @@ export function formComponent (targetElement, state) {
     `}
 
     ${enemies.length === 0 ? '' : `
-      <p>Current choices: ${enemies.join(', ')}</p>
+      <p>Current choices: ${enemies.map((e) => e.icon).join(', ')}</p>
     `}
   `;
 
