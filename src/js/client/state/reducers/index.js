@@ -49,10 +49,10 @@ const initialState = {
       [ 100,  50 ]
     ],
     towers: [{
-      position: [  30,  44 ],
+      position: [  28,  44 ],
       type: null,
     }, {
-      position: [  36,  50 ],
+      position: [  36,  52 ],
       type: null,
     }],
   }, {
