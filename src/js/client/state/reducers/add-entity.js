@@ -1,5 +1,5 @@
-export function addEnemy (state, payload) {
-  const { enemy } = payload;
+export function addEntity (state, payload) {
+  const { entity } = payload;
 
   const levels = state.levels.map((level, index) => {
     if (index === state.activeLevel) {
@@ -10,7 +10,7 @@ export function addEnemy (state, payload) {
         enemies: [
           ...level.enemies,
           {
-            icon: enemy,
+            icon: entity,
             position: [ x, y ],
             // TODO: Right now, it refers to the time in seconds it takes to
             // move along the whole pathway. I might need to change the

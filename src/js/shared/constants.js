@@ -1,4 +1,4 @@
-export const ACTION_ADD_ENEMY = 'ADD_ENEMY';
+export const ACTION_ADD_ENTITY = 'ADD_ENTITY';
 export const ACTION_ADD_PATHWAY_COORDINATE = 'ADD_COORD';
 export const ACTION_CHOOSE_LEVEL = 'LEVEL';
 export const ACTION_CHOOSE_PARTY = 'PARTY';

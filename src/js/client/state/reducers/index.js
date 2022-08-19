@@ -1,5 +1,5 @@
 import {
-  ACTION_ADD_ENEMY,
+  ACTION_ADD_ENTITY,
   ACTION_ADD_PATHWAY_COORDINATE,
   ACTION_CHOOSE_LEVEL,
   ACTION_CHOOSE_PARTY,
@@ -9,7 +9,7 @@ import {
   ACTION_SET_NICKAME,
   ACTION_UPDATE_POSITIONS
 } from '../../../shared/constants.js';
-import { addEnemy } from './add-entity.js';
+import { addEntity } from './add-entity.js';
 import { addPathwayCoordinate } from './add-pathway-coordinate.js';
 import { chooseLevel } from './choose-level.js';
 import { chooseParty } from './choose-party.js';
@@ -93,8 +93,8 @@ export function reducer (state, action) {
   }
 
   switch (action.type) {
-    case ACTION_ADD_ENEMY:
-      return addEnemy(state, action.payload);
+    case ACTION_ADD_ENTITY:
+      return addEntity(state, action.payload);
     case ACTION_ADD_PATHWAY_COORDINATE:
       return addPathwayCoordinate(state, action.payload);
     case ACTION_CHOOSE_LEVEL:

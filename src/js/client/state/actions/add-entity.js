@@ -1,10 +1,10 @@
-import { ACTION_ADD_ENEMY } from '../../../shared/constants.js';
+import { ACTION_ADD_ENTITY } from '../../../shared/constants.js';
 
-export function addEnemy (enemy) {
+export function addEntity (entity) {
   return {
-    type: ACTION_ADD_ENEMY,
+    type: ACTION_ADD_ENTITY,
     payload: {
-      enemy,
+      entity,
     },
   };
 }
