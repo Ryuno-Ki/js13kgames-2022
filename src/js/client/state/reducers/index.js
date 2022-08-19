@@ -1,6 +1,8 @@
 import {
   ACTION_ADD_ENTITY,
   ACTION_ADD_PATHWAY_COORDINATE,
+  ACTION_CHECK_LOOSE_CONDITION,
+  ACTION_CHECK_WIN_CONDITION,
   ACTION_CHOOSE_LEVEL,
   ACTION_CHOOSE_PARTY,
   ACTION_NAVIGATE_TO_SCENE,
@@ -12,6 +14,8 @@ import {
 } from '../../../shared/constants.js';
 import { addEntity } from './add-entity.js';
 import { addPathwayCoordinate } from './add-pathway-coordinate.js';
+import { checkLooseCondition } from './check-loose-condition.js';
+import { checkWinCondition } from './check-win-condition.js';
 import { chooseLevel } from './choose-level.js';
 import { chooseParty } from './choose-party.js';
 import { navigateToScene } from './navigate-to-scene.js';
@@ -27,6 +31,8 @@ const initialState = {
   settings: {
     prefersReducedMotion: false,
   },
+	hasWon: false,
+	hasLost: false,
   entities: {
     death: [{
       icon: '🪔',
@@ -165,6 +171,10 @@ export function reducer (state, action) {
       return addEntity(state, action.payload);
     case ACTION_ADD_PATHWAY_COORDINATE:
       return addPathwayCoordinate(state, action.payload);
+		case ACTION_CHECK_LOOSE_CONDITION:
+			return checkLooseCondition(state);
+		case ACTION_CHECK_WIN_CONDITION:
+			return checkWinCondition(state);
     case ACTION_CHOOSE_LEVEL:
       return chooseLevel(state, action.payload);
     case ACTION_CHOOSE_PARTY:
