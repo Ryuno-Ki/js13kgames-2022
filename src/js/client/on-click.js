@@ -8,7 +8,9 @@ export function onClick (event) {
 
   if (target && target.dataset) {
     if (target.dataset.addEntity) {
-      return store.dispatch(addEntity(target.dataset.addEntity));
+      return store.dispatch(
+        addEntity(target.dataset.addEntity, target.dataset.index)
+      );
     }
 
     if (target.dataset.navigate) {

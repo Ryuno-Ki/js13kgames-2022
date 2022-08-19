@@ -1,9 +1,7 @@
 export function addEntity (state, payload) {
-  const { entity } = payload;
-
   const levels = state.levels.map((level, index) => {
     if (index === state.activeLevel) {
-      return updateLevel(state, level, entity);
+      return updateLevel(state, level, payload);
     } else {
       return level;
     }
@@ -12,7 +10,9 @@ export function addEntity (state, payload) {
   return Object.assign({}, state, { levels });
 }
 
-function updateLevel (state, level, entity) {
+function updateLevel (state, level, payload) {
+  const { entity, index } = payload;
+
   const attackOrDefend = state.player.party === level.mode ? 'defend' : 'attack';
 
   if (attackOrDefend === 'attack') {
@@ -24,7 +24,7 @@ function updateLevel (state, level, entity) {
 
   return {
     ...level,
-    towers: updateTowers(level, entity),
+    towers: updateTowers(level, entity, index),
   };
 }
 
@@ -44,11 +44,15 @@ function updateEnemies (level, entity) {
   ];
 }
 
-function updateTowers (level, entity) {
-  return level.towers.map(function (tower) {
-    return {
-      ...tower,
-      type: entity,
-    };
+function updateTowers (level, entity, index) {
+  return level.towers.map(function (tower, i) {
+    if (i === index) {
+      return {
+        ...tower,
+        type: entity,
+      };
+    }
+
+    return tower;
   });
 }
