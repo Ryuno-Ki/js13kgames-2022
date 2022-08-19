@@ -2,14 +2,14 @@ export function updatePositions (state) {
   const levels = state.levels.map(function (level) {
 
     if (level.begin !== null) {
-      const { begin, pathway } = level;
+      const { pathway } = level;
 
       return {
         ...level,
         enemies: level.enemies.map(function (enemy) {
           return {
             ...enemy,
-            position: computeNewPosition({ begin, enemy, pathway }),
+            position: computeNewPosition({ enemy, pathway }),
           };
         }),
       };
@@ -21,19 +21,20 @@ export function updatePositions (state) {
   return Object.assign({}, state, { levels });
 }
 
-function computeNewPosition ({ begin, enemy, pathway }) {
+function computeNewPosition ({ enemy, pathway }) {
+	const { begin, speed } = enemy;
   const now = new Date() - 0;
   const sinceBegin = now - begin;
 
   // TODO: The math feels too complicated. Get some pen and paper
   // Dur in seconds, sinceBegin is in milliseconds
-  const dur = enemy.speed * 1000;
+  const dur = speed * 1000;
   // First divide to seconds, then to get a percentage
   const t = clamp(
     sinceBegin / (dur + begin),
     sinceBegin,
     sinceBegin + dur
-  ) / 1000 / enemy.speed;
+  ) / 1000 / speed;
 
   const [ start, end ] = getLineSegment(pathway);
   const [ x0, y0 ] = start;

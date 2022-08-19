@@ -42,6 +42,7 @@ function updateEnemies (level, entity) {
     ...level.enemies,
     {
       ...entity,
+			begin: new Date() - 0,
       position: [ x, y ],
     }
   ];
