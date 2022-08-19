@@ -6,7 +6,9 @@
   "scripts": {
     "build": "rollup -c",
     "build:dev": "NODE_ENV=development rollup -c",
+    "deploy": "gh-pages --dist=./public --remote=codeberg --branch=pages --message='Deployed via gh-pages'",
     "postbuild": "yarn zip",
+    "predeploy": "yarn build",
     "test": "mocha --recursive",
     "zip": "node ./scripts/zip-and-check.cjs"
   },
@@ -22,6 +24,7 @@
   "devDependencies": {
     "chai": "4.3.6",
     "dotenv": "16.0.1",
+    "gh-pages": "4.0.0",
     "husky": "8.0.1",
     "masto": "4.4.0",
     "mocha": "10.0.0",
