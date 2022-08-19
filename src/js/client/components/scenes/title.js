@@ -5,7 +5,7 @@ export function titleSceneComponent (targetElement, state) {
     element.innerHTML = '';
   } else {
     element.innerHTML = `
-      <h1>Life Death Tower Defense</h1>
+      <h1><span>Life</span> <span>Death</span> <span>Tower</span> <span>Defense</span></h1>
       <nav class="actions">
         <button type="button" data-navigate="new-game-scene">New Game</button>
         <button type="button" data-navigate="level-editor-scene">Level Editor</button>
