@@ -15,7 +15,9 @@ export function formComponent (targetElement, state) {
     ${enemies.length >= maxEnemies ? '' : `
       <div class="actions">
         ${partyEnemies.map((enemy) => {
-          return `<button type="button" data-add-enemy="${enemy}">${enemy}</button>`
+          return `
+            <button type="button" data-add-entity="${enemy}">${enemy}</button>
+            `
         }).join('')}
       </div>
     `}

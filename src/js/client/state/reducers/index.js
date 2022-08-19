@@ -9,7 +9,7 @@ import {
   ACTION_SET_NICKAME,
   ACTION_UPDATE_POSITIONS
 } from '../../../shared/constants.js';
-import { addEnemy } from './add-enemy.js';
+import { addEnemy } from './add-entity.js';
 import { addPathwayCoordinate } from './add-pathway-coordinate.js';
 import { chooseLevel } from './choose-level.js';
 import { chooseParty } from './choose-party.js';
