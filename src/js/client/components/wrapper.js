@@ -1,6 +1,6 @@
 import '../../../css/main.css';
 
-export function wrapperComponent (targetElement) {
+export function wrapperComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
 
   const scenes = [
@@ -13,6 +13,12 @@ export function wrapperComponent (targetElement) {
     'title',
     'win'
   ];
+
+  if (state.settings.prefersReducedMotion) {
+    element.classList.add('no-motion');
+  } else {
+    element.classList.remove('no-motion');
+  }
 
   element.innerHTML = `
     ${scenes.map(function (scene) {

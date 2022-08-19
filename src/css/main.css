@@ -29,6 +29,18 @@ h1 span {
   opacity: 0;
 }
 
+.no-motion h1 span {
+  animation-name: none;
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduced) {
+  h1 span {
+    animation-name: none;
+		opacity: 1;
+  }
+}
+
 h1 span:nth-child(1),
 h1 span:nth-child(2) {
   position: absolute;

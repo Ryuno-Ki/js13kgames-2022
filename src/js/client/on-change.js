@@ -2,6 +2,7 @@ import { chooseLevel } from './state/actions/choose-level.js';
 import { chooseParty } from './state/actions/choose-party.js';
 import { setDraftLevelMaxEnemies } from './state/actions/set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './state/actions/set-draft-level-mode.js';
+import { setMotionPreference } from './state/actions/set-motion-preference.js';
 import { setNickname } from './state/actions/set-nickname.js';
 import store from './state/store.js';
 
@@ -20,6 +21,10 @@ export function onChange (event) {
         return store.dispatch(setNickname(target.value));
       case 'party':
         return store.dispatch(chooseParty(target.value));
+      case 'prefers-reduced-motion-no':
+        return store.dispatch(setMotionPreference(false));
+      case 'prefers-reduced-motion-yes':
+        return store.dispatch(setMotionPreference(true));
       default:
         // Do nothing
     }

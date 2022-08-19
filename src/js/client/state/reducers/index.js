@@ -6,6 +6,7 @@ import {
   ACTION_NAVIGATE_TO_SCENE,
   ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES,
   ACTION_SET_DRAFT_LEVEL_MODE,
+  ACTION_SET_MOTION_PREFERENCE,
   ACTION_SET_NICKAME,
   ACTION_UPDATE_POSITIONS
 } from '../../../shared/constants.js';
@@ -16,12 +17,16 @@ import { chooseParty } from './choose-party.js';
 import { navigateToScene } from './navigate-to-scene.js';
 import { setDraftLevelMaxEnemies } from './set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './set-draft-level-mode.js';
+import { setMotionPreference } from './set-motion-preference.js';
 import { setNickname } from './set-nickname.js';
 import { updatePositions } from './update-positions.js';
 
 const initialState = {
   activeLevel: null,
   activeScene: 'title-scene',
+  settings: {
+    prefersReducedMotion: false,
+  },
   entities: {
     death: [{
       icon: '🪔',
@@ -170,6 +175,8 @@ export function reducer (state, action) {
       return setDraftLevelMaxEnemies(state, action.payload);
     case ACTION_SET_DRAFT_LEVEL_MODE:
       return setDraftLevelMode(state, action.payload);
+    case ACTION_SET_MOTION_PREFERENCE:
+      return setMotionPreference(state, action.payload);
     case ACTION_SET_NICKAME:
       return setNickname(state, action.payload);
     case ACTION_UPDATE_POSITIONS:
