@@ -4,7 +4,6 @@ export function newGameSceneComponent (targetElement, state) {
   if (state.activeScene !== 'new-game-scene') {
     element.innerHTML = '';
   } else {
-    const { nickname, party } = state.player;
     const levels = state.levels.map((level, index) => {
       return {
         label: `Level ${index + 1} (${level.mode})`,
@@ -21,14 +20,18 @@ export function newGameSceneComponent (targetElement, state) {
         <input id="nickname" type="text" />
       </div>
       <div>
-        <label for="party">
-          Which party do you want to defend?
+        <label for="party" aria-describedby="party-explained">
+          Which party do you want to join?
         </label>
         <select id="party">
           <option value="">Choose wisely</option>
           <option value="life">Life</option>
           <option value="death">Death</option>
         </select>
+        <p id="party-explained">
+          Depending on your choice, you will either join the attack or the
+          defence forces. What happens depends also on the level.
+        </p>
       </div>
       <div>
         <label for="activelevel">

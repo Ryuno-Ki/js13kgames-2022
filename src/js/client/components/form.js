@@ -5,10 +5,12 @@ export function formComponent (targetElement, state) {
   const { nickname, party } = state.player;
   const { enemies, maxEnemies, mode } = pickLevel(state);
   const partyEnemies = state.enemies[ mode ];
+  const attackOrDefend = party === mode ? 'defend' : 'attack';
 
   element.innerHTML = `
-    <h2>Level ${state.activeLevel + 1}</h2>
+    <h2>Level ${state.activeLevel + 1} (${mode})</h2>
     <p>${nickname} plays for ${party}.</p>
+    <p>Therefore it is about ${attackOrDefend}ing here.</p>
 
     ${enemies.length >= maxEnemies ? '' : `
       <div class="actions">
