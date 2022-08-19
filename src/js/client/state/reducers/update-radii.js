@@ -26,5 +26,15 @@ function updateLevel (level) {
         radius: baseRadius + (enemy.radius + growthRate) % 4,
       };
     }),
+    towers: level.towers.map((tower) => {
+      if (tower.icon) {
+        return {
+          ...tower,
+          radius: baseRadius + (tower.radius + growthRate) % 4,
+        };
+      }
+
+      return tower;
+    }),
   };
 }

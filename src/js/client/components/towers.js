@@ -9,11 +9,11 @@ export function towersComponent (targetElement, state) {
 
   element.innerHTML = towers.map((tower, index) => {
     const [ x, y ] = tower.position;
-    const text = tower.type === null ? index + 1 : tower.type;
+    const text = tower.icon === null ? index + 1 : tower.icon;
 
     return `
       <g>
-        <circle cx="${x}" cy="${y}" r="4" fill="${stroke}" />
+        <circle cx="${x}" cy="${y}" r="${tower.radius}" fill="${stroke}" />
         <text x="${x - 3}" y="${y + 3}" stroke="${textColor}">${text}</text>
     </g>
   `;

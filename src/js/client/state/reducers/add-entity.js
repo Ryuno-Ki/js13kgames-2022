@@ -42,7 +42,7 @@ function updateEnemies (level, entity) {
     ...level.enemies,
     {
       ...entity,
-			begin: new Date() - 0,
+      begin: new Date() - 0,
       position: [ x, y ],
     }
   ];
@@ -53,7 +53,7 @@ function updateTowers (level, entity, index) {
     if (i === index) {
       return {
         ...tower,
-        type: entity.icon
+        ...entity,
       };
     }
 

@@ -150,11 +150,13 @@ const initialState = {
       [ 100,  50 ]
     ],
     towers: [{
+      icon: null,
       position: [  30,  44 ],
-      type: null,
+      radius: 4,
     }, {
+      icon: null,
       position: [  36,  50 ],
-      type: null,
+      radius: 4,
     }],
   }],
   player: {
