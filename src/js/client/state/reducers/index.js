@@ -10,7 +10,8 @@ import {
   ACTION_SET_DRAFT_LEVEL_MODE,
   ACTION_SET_MOTION_PREFERENCE,
   ACTION_SET_NICKAME,
-  ACTION_UPDATE_POSITIONS
+  ACTION_UPDATE_POSITIONS,
+  ACTION_UPDATE_RADII
 } from '../../../shared/constants.js';
 import { addEntity } from './add-entity.js';
 import { addPathwayCoordinate } from './add-pathway-coordinate.js';
@@ -24,6 +25,7 @@ import { setDraftLevelMode } from './set-draft-level-mode.js';
 import { setMotionPreference } from './set-motion-preference.js';
 import { setNickname } from './set-nickname.js';
 import { updatePositions } from './update-positions.js';
+import { updateRadii } from './update-radii.js';
 
 const initialState = {
   activeLevel: null,
@@ -31,8 +33,8 @@ const initialState = {
   settings: {
     prefersReducedMotion: false,
   },
-	hasWon: false,
-	hasLost: false,
+  hasWon: false,
+  hasLost: false,
   entities: {
     death: [{
       icon: '🪔',
@@ -171,10 +173,10 @@ export function reducer (state, action) {
       return addEntity(state, action.payload);
     case ACTION_ADD_PATHWAY_COORDINATE:
       return addPathwayCoordinate(state, action.payload);
-		case ACTION_CHECK_LOOSE_CONDITION:
-			return checkLooseCondition(state);
-		case ACTION_CHECK_WIN_CONDITION:
-			return checkWinCondition(state);
+    case ACTION_CHECK_LOOSE_CONDITION:
+      return checkLooseCondition(state);
+    case ACTION_CHECK_WIN_CONDITION:
+      return checkWinCondition(state);
     case ACTION_CHOOSE_LEVEL:
       return chooseLevel(state, action.payload);
     case ACTION_CHOOSE_PARTY:
@@ -191,6 +193,8 @@ export function reducer (state, action) {
       return setNickname(state, action.payload);
     case ACTION_UPDATE_POSITIONS:
       return updatePositions(state, action.payload);
+    case ACTION_UPDATE_RADII:
+      return updateRadii(state);
     default:
       return state;
   }
