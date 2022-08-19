@@ -9,6 +9,7 @@ import { winSceneComponent } from './components/scenes/win.js';
 
 import { attackComponent } from './components/attack.js';
 import { canvasComponent } from './components/canvas.js';
+import { defendComponent } from './components/defend.js';
 import { enemiesComponent } from './components/enemies.js';
 import { formComponent } from './components/form.js';
 import { levelComponent } from './components/level.js';
@@ -27,6 +28,7 @@ export function init () {
   add('about-scene', aboutSceneComponent);
   add('attack', attackComponent);
   add('canvas', canvasComponent);
+  add('defend', defendComponent);
   add('enemies', enemiesComponent);
   add('form', formComponent);
   add('game-over-scene', gameOverSceneComponent);

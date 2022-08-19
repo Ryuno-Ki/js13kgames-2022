@@ -1,15 +1,16 @@
 import { pickLevel } from './helper.js';
 
-export function attackComponent (targetElement, state) {
+export function defendComponent (targetElement, state) {
   const element = targetElement.cloneNode(true);
   const { mode } = pickLevel(state);
-  const partyEnemies = state.enemies[ mode ];
+  const side = mode === 'death' ? 'life' : 'death';
+  const towers = state.enemies[ side ];
 
   element.innerHTML = `
     <div class="actions">
-      ${partyEnemies.map((enemy) => {
+      ${towers.map((tower) => {
         return `
-          <button type="button" data-add-entity="${enemy}">${enemy}</button>
+          <button type="button" data-add-entity="${tower}">${tower}</button>
           `
       }).join('')}
     </div>
