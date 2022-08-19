@@ -7,6 +7,7 @@ import { settingsSceneComponent } from './components/scenes/settings.js';
 import { titleSceneComponent } from './components/scenes/title.js';
 import { winSceneComponent } from './components/scenes/win.js';
 
+import { attackComponent } from './components/attack.js';
 import { canvasComponent } from './components/canvas.js';
 import { enemiesComponent } from './components/enemies.js';
 import { formComponent } from './components/form.js';
@@ -24,6 +25,7 @@ import { step } from './render.js';
 
 export function init () {
   add('about-scene', aboutSceneComponent);
+  add('attack', attackComponent);
   add('canvas', canvasComponent);
   add('enemies', enemiesComponent);
   add('form', formComponent);

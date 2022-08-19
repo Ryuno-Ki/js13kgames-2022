@@ -13,13 +13,7 @@ export function formComponent (targetElement, state) {
     <p>Therefore it is about ${attackOrDefend}ing here.</p>
 
     ${enemies.length >= maxEnemies ? '' : `
-      <div class="actions">
-        ${partyEnemies.map((enemy) => {
-          return `
-            <button type="button" data-add-entity="${enemy}">${enemy}</button>
-            `
-        }).join('')}
-      </div>
+      <div class="actions" data-component="attack"></div>
     `}
 
     ${enemies.length === 0 ? '' : `
