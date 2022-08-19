@@ -11,9 +11,16 @@ export function addEntity (state, payload) {
 }
 
 function updateLevel (state, level, payload) {
-  const { entity, index } = payload;
+  const { entity: entityIcon, index } = payload;
+  const { party } = state.player;
 
-  const attackOrDefend = state.player.party === level.mode ? 'defend' : 'attack';
+  // FIXME: This is a hack. I have some knot in my mind to why I look it up
+  // this way right now
+  const side = party === 'death' ? 'life' : 'death';
+  const entity = state.entities[ party ].find((e) => e.icon === entityIcon)
+    || state.entities[ side ].find((e) => e.icon === entityIcon);
+
+  const attackOrDefend = party === level.mode ? 'defend' : 'attack';
 
   if (attackOrDefend === 'attack') {
     return {
@@ -34,12 +41,8 @@ function updateEnemies (level, entity) {
   return [
     ...level.enemies,
     {
-      icon: entity,
+      ...entity,
       position: [ x, y ],
-      // TODO: Right now, it refers to the time in seconds it takes to
-      // move along the whole pathway. I might need to change the
-      // meaning in the future.
-      speed: 10,
     }
   ];
 }
@@ -49,7 +52,7 @@ function updateTowers (level, entity, index) {
     if (i === index) {
       return {
         ...tower,
-        type: entity,
+        type: entity.icon
       };
     }
 

@@ -22,10 +22,70 @@ import { updatePositions } from './update-positions.js';
 const initialState = {
   activeLevel: null,
   activeScene: 'title-scene',
-  enemies: {
-    death: [ '🪔', '🕯️', '📿','👼', '😇', '🎋' ],
+  entities: {
+    death: [{
+      icon: '🪔',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '🕯️',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '📿',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '👼',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '😇',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '🎋',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }],
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
-    life: [ '🦇', '🕷️', '💀', '👺', '👹', '👻'],
+    life: [{
+      icon: '🦇',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '🕷️',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '💀',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '👺',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '👹',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }, {
+      icon: '👻',
+      life: 1,
+      radius: 2,
+      speed: 10,
+    }],
   },
   levelDraft: {
     height: 320,
@@ -37,6 +97,8 @@ const initialState = {
     towers: []
   },
   levels: [{
+    // TODO: Refactor. Should be set for each added enemy to let them move
+    // independently
     begin: null,
     height: 320,
     width: 320,
@@ -51,6 +113,7 @@ const initialState = {
       [  70,  50 ],
       [ 100,  50 ]
     ],
+    // TODO: Add another property to control current sight radius
     towers: [{
       position: [  28,  44 ],
       type: null,
