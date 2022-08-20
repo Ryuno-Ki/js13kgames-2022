@@ -2401,3 +2401,8 @@ zip-dir@2.0.0:
   dependencies:
     async "^3.2.0"
     jszip "^3.2.2"
+
+zzfx@1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/zzfx/-/zzfx-1.1.8.tgz#54eda31d482d00b3ab45c636be588e57ef50ba0b"
+  integrity sha512-4HWCIuYV3ThQjgQScb6q8izG2S7lT+fdaWxQ2nYG0A/9+lBExsvP2f3gsoFoGnBEQItO/usoY/6RYkIx93JATg==
