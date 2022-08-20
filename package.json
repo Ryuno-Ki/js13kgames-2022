@@ -8,8 +8,12 @@
     "build:dev": "NODE_ENV=development rollup -c",
     "deploy": "gh-pages --dist=./public --remote=codeberg --branch=pages --message='Deployed via gh-pages'",
     "postbuild": "yarn zip",
+    "posttest": "yarn tsd",
     "predeploy": "yarn build",
     "test": "mocha --recursive",
+    "tsc": "tsc",
+    "tsd": "tsd",
+    "types": "tsc --noEmit false --emitDeclarationOnly true",
     "zip": "node ./scripts/zip-and-check.cjs"
   },
   "repository": {
@@ -32,9 +36,10 @@
     "rollup-plugin-css-only": "3.1.0",
     "rollup-plugin-generate-html-template": "1.7.0",
     "rollup-plugin-license": "2.8.1",
-    "rollup-plugin-terser": "7.0.2"
-  },
-  "dependencies": {
+    "rollup-plugin-terser": "7.0.2",
+    "sinon": "14.0.0",
+    "tsd": "0.22.0",
+    "typescript": "4.7.4",
     "zip-dir": "2.0.0"
   }
 }

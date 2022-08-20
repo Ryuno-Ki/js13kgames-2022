@@ -1,7 +1,14 @@
 import { pickLevel } from './helper.js';
 
+/**
+ * Component to render a level in SVG
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function levelComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
   const { enemies, height, mode, width } = pickLevel(state);
 
   const fill = mode === 'death' ? 'black' : 'white';

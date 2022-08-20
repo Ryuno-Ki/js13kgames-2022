@@ -1,15 +1,43 @@
+/**
+ * Helper function to remove a DOM node
+ *
+ * @private
+ * @argument {HTMLElement} realNode
+ */
 function removeRealNodeFromDOM (realNode) {
   realNode.remove();
 }
 
+/**
+ * Helper function to append a node to the DOM
+ *
+ * @private
+ * @argument {HTMLElement} parentNode
+ * @argument {HTMLElement} virtualNode
+ */
 function addToRealDOM (parentNode, virtualNode) {
   parentNode.appendChild(virtualNode);
 }
 
+/**
+ * Helper function to replace a node with another
+ *
+ * @private
+ * @argument {HTMLElement} realNode
+ * @argument {HTMLElement} virtualNode
+ */
 function replaceNode (realNode, virtualNode) {
   realNode.replaceWith(virtualNode);
 }
 
+/**
+ * Helper function to compare two nodes.
+ *
+ * @private
+ * @argument {HTMLElement} node1
+ * @argument {HTMLElement} node2
+ * @returns {boolean}
+ */
 function hasNodeChanged (node1, node2) {
   // Different tag name
   if (node1.tagName !== node2.tagName) {
@@ -46,6 +74,13 @@ function hasNodeChanged (node1, node2) {
   return false;
 }
 
+/**
+ * Compare a real node with a virtual one and update the parent node accordingly
+ *
+ * @argument {HTMLElement} parentNode
+ * @argument {HTMLElement} realNode
+ * @argument {HTMLElement} virtualNode
+ */
 export function applyToDOM (parentNode, realNode, virtualNode) {
   if (realNode && !virtualNode) {
     return removeRealNodeFromDOM(realNode);
@@ -59,8 +94,8 @@ export function applyToDOM (parentNode, realNode, virtualNode) {
     return replaceNode(realNode, virtualNode);
   }
 
-  const realChildren = Array.from(realNode.children);
-  const virtualChildren = Array.from(virtualNode.children);
+  const realChildren = /** @type {Array<HTMLElement>} */(Array.from(realNode.children));
+  const virtualChildren = /** @type {Array<HTMLElement>} */(Array.from(virtualNode.children));
 
   const max = Math.max(realChildren.length, virtualChildren.length);
 

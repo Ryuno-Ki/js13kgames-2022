@@ -7,8 +7,11 @@ import { updatePositions } from './state/actions/update-positions.js';
 import { updateRadii } from './state/actions/update-radii.js';
 import store from './state/store.js';
 
+/**
+ * A single step that calls itself via requestAnimationFrame
+ */
 export function step () {
-  const main = document.querySelector(APP_SELECTOR);
+  const main = /** @type {HTMLElement} */(document.querySelector(APP_SELECTOR));
 
   if (!main) {
     return console.error('Could not find #app');

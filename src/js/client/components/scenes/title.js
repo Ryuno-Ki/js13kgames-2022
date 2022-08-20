@@ -1,5 +1,12 @@
+/**
+ * Component to render title scene if active
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function titleSceneComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
 
   if (state.activeScene !== 'title-scene') {
     element.innerHTML = '';

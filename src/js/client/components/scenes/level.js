@@ -1,5 +1,12 @@
+/**
+ * Component to render level scene if active
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function levelSceneComponent (targetElement, state) {
-	const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
 
   if (state.activeScene !== 'level-scene') {
     element.innerHTML = '';

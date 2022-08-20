@@ -27,9 +27,88 @@ import { setNickname } from './set-nickname.js';
 import { updatePositions } from './update-positions.js';
 import { updateRadii } from './update-radii.js';
 
+/**
+ * @typedef {import('../actions/add-entity.js').Action | import('../actions/add-pathway-coordinate.js').Action | import('../actions/check-loose-condition.js').Action | import('../actions/check-win-condition.js').Action | import('../actions/choose-level.js').Action | import('../actions/choose-party.js').Action | import('../actions/navigate-to-scene.js').Action | import('../actions/set-draft-level-max-enemies.js').Action | import('../actions/set-draft-level-mode.js').Action | import('../actions/set-motion-preference.js').Action | import('../actions/set-nickname.js').Action | import('../actions/update-positions.js').Action | import('../actions/update-radii.js').Action} Action
+ */
+
+/**
+ * @typedef {object} Entity
+ * @property {string} icon
+ * @property {number} radius
+ * @property {number} speed
+ */
+
+/**
+ * @typedef {object} Enemy
+ * @property {number} begin
+ * @property {string} icon
+ * @property {Array<number>} position
+ * @property {number} radius
+ * @property {number} speed
+ */
+
+/**
+ * @typedef {Array<number>} LineSegment
+ */
+
+/**
+ * @typedef {Array<LineSegment>} Pathway
+ */
+
+/**
+ * @typedef {object} Tower
+ * @property {string | null} icon
+ * @property {Array<number>} position
+ * @property {number} radius
+ */
+
+/**
+ * @typedef {object} DraftLevel
+ * @property {number | null} begin
+ * @property {Array<Enemy>} enemies
+ * @property {number} height
+ * @property {number | null} maxEnemies
+ * @property {'death' | 'life' | null} mode
+ * @property {Pathway} pathway
+ * @property {Array<Tower>} towers
+ * @property {number} width
+ */
+
+/**
+ * @typedef {object} Level
+ * @property {number | null} begin
+ * @property {Array<Enemy>} enemies
+ * @property {number} height
+ * @property {number} maxEnemies
+ * @property {'death' | 'life'} mode
+ * @property {Pathway} pathway
+ * @property {Array<Tower>} towers
+ * @property {number} width
+ */
+
+/**
+ * @typedef {object} Player
+ * @property {string | null} nickname
+ * @property {'death' | 'life' | null} party
+ */
+
+/**
+ * @typedef {object} State
+ * @property {number | null} activeLevel
+ * @property {import('../../components/wrapper.js').Scene} activeScene
+ * @property {object} entities
+ * @property {Array<Entity>} entities.death
+ * @property {Array<Entity>} entities.life
+ * @property {DraftLevel} levelDraft
+ * @property {Array<Level>} levels
+ * @property {Player} player
+ * @property {object} settings
+ * @property {boolean} settings.prefersReducedMotion
+ */
+
 const initialState = {
   activeLevel: null,
-  activeScene: 'title-scene',
+  activeScene: /** @type {import('../../components/wrapper.js').Scene} */('title-scene'),
   settings: {
     prefersReducedMotion: false,
   },
@@ -101,6 +180,7 @@ const initialState = {
     }],
   },
   levelDraft: {
+    begin: null,
     height: 320,
     width: 320,
     mode: null,
@@ -115,7 +195,7 @@ const initialState = {
     begin: null,
     height: 320,
     width: 320,
-    mode: 'life',
+    mode: /** @type {'life'} */('life'),
     maxEnemies: 3,
     enemies: [],
     pathway: [
@@ -128,17 +208,21 @@ const initialState = {
     ],
     // TODO: Add another property to control current sight radius
     towers: [{
+      icon: null,
       position: [  28,  44 ],
+      radius: 2,
       type: null,
     }, {
+      icon: null,
       position: [  36,  52 ],
+      radius: 2,
       type: null,
     }],
   }, {
     begin: null,
     height: 320,
     width: 320,
-    mode: 'death',
+    mode: /** @type {'death'} */('death'),
     maxEnemies: 5,
     enemies: [],
     pathway: [
@@ -165,6 +249,13 @@ const initialState = {
   },
 };
 
+/**
+ * Reducer to compute the new state
+ *
+ * @argument {State} state
+ * @argument {Action} action
+ * @returns {State}
+ */
 export function reducer (state, action) {
   if (typeof state === 'undefined') {
     return initialState;
@@ -194,7 +285,7 @@ export function reducer (state, action) {
     case ACTION_SET_NICKAME:
       return setNickname(state, action.payload);
     case ACTION_UPDATE_POSITIONS:
-      return updatePositions(state, action.payload);
+      return updatePositions(state);
     case ACTION_UPDATE_RADII:
       return updateRadii(state);
     default:

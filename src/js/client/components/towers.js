@@ -1,7 +1,14 @@
 import { pickLevel } from './helper.js';
 
+/**
+ * Component to render a tower in SVG
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function towersComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
   const stroke = targetElement.dataset.stroke;
   const textColor = stroke === 'black' ? 'white' : 'black';
 
@@ -15,8 +22,8 @@ export function towersComponent (targetElement, state) {
       <g>
         <circle cx="${x}" cy="${y}" r="${tower.radius}" fill="${stroke}" />
         <text x="${x - 3}" y="${y + 3}" stroke="${textColor}">${text}</text>
-    </g>
-  `;
+      </g>
+    `;
   }).join('');
 
   return element;

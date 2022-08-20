@@ -1,3 +1,9 @@
+/**
+ * Helper function to pick the current or a draft level from state
+ *
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {import('../state/reducers/index.js').DraftLevel | import('../state/reducers/index.js').Level}
+ */
 export function pickLevel (state) {
   if (state.activeLevel === null) {
     return state.levelDraft;
@@ -6,6 +12,12 @@ export function pickLevel (state) {
   return state.levels[ state.activeLevel ];
 }
 
+/**
+ * Map pathway coordinates to a SVG path string
+ *
+ * @argument {import('../state/reducers/index.js').Pathway} coordinates
+ * @returns {string}
+ */
 export function mapCoordinatesToPath (coordinates) {
   if (coordinates.length === 0) {
     return '';

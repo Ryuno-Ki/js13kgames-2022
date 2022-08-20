@@ -1,7 +1,14 @@
 import { mapCoordinatesToPath, pickLevel } from './helper.js';
 
+/**
+ * Component for rendering the pathway in SVG
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function pathwayComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
   const stroke = element.dataset.stroke;
 
   const { pathway } = pickLevel(state);
@@ -16,6 +23,13 @@ export function pathwayComponent (targetElement, state) {
   return element;
 }
 
+/**
+ * Helper function to render the starting point if there is a pathway
+ *
+ * @private
+ * @argument {import('../state/reducers/index.js').Pathway} pathway
+ * @returns {string}
+ */
 function getStartingPoint (pathway) {
   if (pathway.length === 0) {
     return '';
@@ -27,6 +41,13 @@ function getStartingPoint (pathway) {
   return `<text x="${beginX}" y="${beginY}">${begin}</text>`;
 }
 
+/**
+ * Helper function to render the ending point if there is a pathway
+ *
+ * @private
+ * @argument {import('../state/reducers/index.js').Pathway} pathway
+ * @returns {string}
+ */
 function getEndpoint (pathway) {
   if (pathway.length < 2) {
     return '';

@@ -1,5 +1,12 @@
+/**
+ * Component to render new game scene if active
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function newGameSceneComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
 
   if (state.activeScene !== 'new-game-scene') {
     element.innerHTML = '';
@@ -56,6 +63,13 @@ export function newGameSceneComponent (targetElement, state) {
   return element;
 }
 
+/**
+ * Helper function to check whether all pre-conditions are met to start playing
+ *
+ * @private
+ * @argument {import('../../state/reducers/index.js').State} state
+ * @returns {boolean}
+ */
 function isReadyForPlay (state) {
   const { activeLevel } = state;
   const { nickname, party } = state.player;
@@ -72,6 +86,8 @@ function isReadyForPlay (state) {
     return false;
   }
 
+  // TODO: I believe, this check was to handle the default option in the level select
+  // @ts-ignore
   if (activeLevel === '') {
     return false;
   }

@@ -1,7 +1,20 @@
 import '../../../css/main.css';
 
+/**
+ * @typedef {'about-scene' | 'game-over-scene' | 'level-scene' | 'level-editor-scene' | 'new-game-scene' | 'settings-scene' | 'title-scene' | 'win-scene'} Scene
+ */
+
+/**
+ * @typedef {Array<Scene>} Scenes
+ */
+
+/**
+ * Component to create wrapping element around all others.
+ * @argument {HTMLDivElement} targetElement
+ * @argument {import('../state/reducers/index.js').State} state
+ */
 export function wrapperComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLDivElement} */(targetElement.cloneNode(true));
 
   const scenes = [
     'about',

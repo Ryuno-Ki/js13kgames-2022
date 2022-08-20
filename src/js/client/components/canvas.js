@@ -1,7 +1,14 @@
 import { pickLevel } from './helper.js';
 
+/**
+ * Component to render SVG
+ *
+ * @argument {HTMLElement} targetElement
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {HTMLElement}
+ */
 export function canvasComponent (targetElement, state) {
-  const element = targetElement.cloneNode(true);
+  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
   const { height, width } = pickLevel(state);
 
   element.innerHTML = `

@@ -1,11 +1,16 @@
-import { chooseLevel } from './state/actions/choose-level.js';
-import { chooseParty } from './state/actions/choose-party.js';
+// @ts-nocheck
+import { chooseLevel } from './state/actions/choose-level.js'; import { chooseParty } from './state/actions/choose-party.js';
 import { setDraftLevelMaxEnemies } from './state/actions/set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './state/actions/set-draft-level-mode.js';
 import { setMotionPreference } from './state/actions/set-motion-preference.js';
 import { setNickname } from './state/actions/set-nickname.js';
 import store from './state/store.js';
 
+/**
+ * Event handler for change events
+ *
+ * @argument {Event} event
+ */
 export function onChange (event) {
 	const { target } = event;
 
