@@ -20,16 +20,16 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.`;
 
 const plugins = process.env.NODE_ENV === 'development'
-	? [
-		css({ output: 'main.css' }),
-		htmlTemplate({ template: './src/single.html', target: './public/single.html' })
-	]
-	: [
-		css({ output: 'main.css' }),
-		htmlTemplate({ template: './src/single.html', target: './public/single.html' }),
-		terser(),
-		license({ banner: LICENSE_HEADER })
-	];
+  ? [
+    css({ output: 'main.css' }),
+    htmlTemplate({ template: './src/single.html', target: './public/index.html' })
+  ]
+  : [
+    css({ output: 'main.css' }),
+    htmlTemplate({ template: './src/single.html', target: './public/index.html' }),
+    terser(),
+    license({ banner: LICENSE_HEADER })
+  ];
 
 const client = {
   input: './src/js/client/app.js',
