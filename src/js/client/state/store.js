@@ -13,6 +13,7 @@ class Store {
   constructor (reducer) {
     this.reducer = reducer;
     this.state = reducer(undefined, { type: '' });
+		this._hydrateFromWebStorage();
   }
 
   /**
@@ -45,6 +46,22 @@ class Store {
 				document.title = `${action.payload.scene} | Life Death Tower Defense | js13kgames-2022 - DEATH`;
 			default:
 				this._saveStateToWebStorage();
+		}
+	}
+
+	/**
+	 * Restore saved state if possible
+	 *
+	 * @private
+	 */
+	_hydrateFromWebStorage () {
+		try {
+			const state = localStorage.getItem(STORAGE_KEY);
+			if (state !== null) {
+				this.state = JSON.parse(state);
+			}
+		} catch (exc) {
+			console.error('Could not restore state because', exc);
 		}
 	}
 
