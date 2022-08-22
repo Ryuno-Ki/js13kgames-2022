@@ -1,3 +1,5 @@
+import { death } from './entities/death.js';
+
 export const initialState = {
   activeLevel: null,
   activeScene: /** @type {import('../components/wrapper.js').Scene} */('title-scene'),
@@ -7,37 +9,7 @@ export const initialState = {
   hasWon: false,
   hasLost: false,
   entities: {
-    death: [{
-      icon: '🪔',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '🕯️',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '📿',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '👼',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '😇',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '🎋',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }],
+    death,
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
     life: [{
       icon: '🦇',
