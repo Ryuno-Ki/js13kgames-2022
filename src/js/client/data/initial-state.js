@@ -1,5 +1,6 @@
 import { death } from './entities/death.js';
 import { life } from './entities/life.js';
+import { levelDraft } from './levels/draft.js';
 
 export const initialState = {
   activeLevel: null,
@@ -14,16 +15,7 @@ export const initialState = {
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
     life,
   },
-  levelDraft: {
-    begin: null,
-    height: 320,
-    width: 320,
-    mode: null,
-    maxEnemies: null,
-    enemies: [],
-    pathway: [],
-    towers: []
-  },
+  levelDraft,
   levels: [{
     // TODO: Refactor. Should be set for each added enemy to let them move
     // independently
