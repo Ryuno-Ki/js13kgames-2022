@@ -1,4 +1,5 @@
 import { death } from './entities/death.js';
+import { life } from './entities/life.js';
 
 export const initialState = {
   activeLevel: null,
@@ -11,37 +12,7 @@ export const initialState = {
   entities: {
     death,
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
-    life: [{
-      icon: '🦇',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '🕷️',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '💀',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '👺',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '👹',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }, {
-      icon: '👻',
-      life: 1,
-      radius: 2,
-      speed: 10,
-    }],
+    life,
   },
   levelDraft: {
     begin: null,
