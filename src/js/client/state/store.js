@@ -1,6 +1,7 @@
 import {
 	ACTION_NAVIGATE_TO_SCENE
 } from '../../shared/constants.js';
+import { STORAGE_KEY } from '../constants.js';
 import { reducer } from './reducers/index.js';
 
 class Store {
@@ -43,7 +44,20 @@ class Store {
 			case ACTION_NAVIGATE_TO_SCENE:
 				document.title = `${action.payload.scene} | Life Death Tower Defense | js13kgames-2022 - DEATH`;
 			default:
-				// Do nothing
+				this._saveStateToWebStorage();
+		}
+	}
+
+	/**
+	 * Save current state to localStorage if possible
+	 *
+	 * @private
+	 */
+	_saveStateToWebStorage () {
+		try {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.getState()));
+		} catch (exc) {
+			console.error('Could not save state because', exc);
 		}
 	}
 }
