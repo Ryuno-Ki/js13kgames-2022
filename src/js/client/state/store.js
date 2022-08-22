@@ -1,3 +1,6 @@
+import {
+	ACTION_NAVIGATE_TO_SCENE
+} from '../../shared/constants.js';
 import { reducer } from './reducers/index.js';
 
 class Store {
@@ -28,6 +31,21 @@ class Store {
   getState () {
     return this.state;
   }
+
+	/**
+	 * Depending on the action apply side effects if it makes sense.
+	 *
+	 * @private
+   * @argument {import('./reducers/index.js').Action} action
+	 */
+	_applySideEffects (action) {
+		switch (action.type) {
+			case ACTION_NAVIGATE_TO_SCENE:
+				document.title = `${action.payload.scene} | Life Death Tower Defense | js13kgames-2022 - DEATH`;
+			default:
+				// Do nothing
+		}
+	}
 }
 
 const store = new Store(reducer);
