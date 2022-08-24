@@ -1,8 +1,8 @@
-import { ACTION_ADD_PATHWAY_COORDINATE } from '../../../shared/constants.js';
+import { ACTION_ADD_COORDINATE } from '../../../shared/constants.js';
 
 /**
  * @typedef {object} Action
- * @property {import('../../../shared/constants.js').ACTION_ADD_PATHWAY_COORDINATE} type
+ * @property {import('../../../shared/constants.js').ACTION_ADD_COORDINATE} type
  * @property {object} payload
  * @property {Array<number>} payload.coordinate
  */
@@ -18,12 +18,12 @@ import { ACTION_ADD_PATHWAY_COORDINATE } from '../../../shared/constants.js';
  * @argument {number} boundingRect.top
  * @returns {Action}
  */
-export function addPathwayCoordinate ({ pageX, pageY }, { left, top }) {
+export function addCoordinate ({ pageX, pageY }, { left, top }) {
   const x = Math.round(pageX - left);
   const y = Math.round(pageY - top);
 
   return {
-    type: ACTION_ADD_PATHWAY_COORDINATE,
+    type: ACTION_ADD_COORDINATE,
     payload: {
       coordinate: [ x, y ],
     },

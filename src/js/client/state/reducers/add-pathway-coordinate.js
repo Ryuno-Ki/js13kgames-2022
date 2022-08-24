@@ -7,7 +7,7 @@ import { pickLevel } from '../../components/helper.js';
  * @argument {import('../actions/add-pathway-coordinate.js').Action['payload']} payload
  * @returns {import('./index.js').State}
  */
-export function addPathwayCoordinate (state, payload) {
+export function addCoordinate (state, payload) {
   const level = pickLevel(state);
 
   const { coordinate } = payload;

@@ -1,7 +1,7 @@
 import { initialState } from '../../data/initial-state.js';
 import {
   ACTION_ADD_ENTITY,
-  ACTION_ADD_PATHWAY_COORDINATE,
+  ACTION_ADD_COORDINATE,
   ACTION_CHECK_LOOSE_CONDITION,
   ACTION_CHECK_WIN_CONDITION,
   ACTION_CHOOSE_LEVEL,
@@ -16,7 +16,7 @@ import {
   ACTION_UPDATE_RADII
 } from '../../../shared/constants.js';
 import { addEntity } from './add-entity.js';
-import { addPathwayCoordinate } from './add-pathway-coordinate.js';
+import { addCoordinate } from './add-pathway-coordinate.js';
 import { checkLooseCondition } from './check-loose-condition.js';
 import { checkWinCondition } from './check-win-condition.js';
 import { chooseLevel } from './choose-level.js';
@@ -125,8 +125,8 @@ export function reducer (state, action) {
   switch (action.type) {
     case ACTION_ADD_ENTITY:
       return addEntity(state, action.payload);
-    case ACTION_ADD_PATHWAY_COORDINATE:
-      return addPathwayCoordinate(state, action.payload);
+    case ACTION_ADD_COORDINATE:
+      return addCoordinate(state, action.payload);
     case ACTION_CHECK_LOOSE_CONDITION:
       return checkLooseCondition(state);
     case ACTION_CHECK_WIN_CONDITION:

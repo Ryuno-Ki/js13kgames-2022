@@ -1,5 +1,5 @@
 import { addEntity } from './state/actions/add-entity.js';
-import { addPathwayCoordinate } from './state/actions/add-pathway-coordinate.js';
+import { addCoordinate } from './state/actions/add-pathway-coordinate.js';
 import { navigateToScene } from './state/actions/navigate-to-scene.js';
 import store from './state/store.js';
 
@@ -48,7 +48,7 @@ function maybeHandleDraftLevel (event) {
 
   if (isWithinBoundaries(event, boundingRect)) {
     const { left, top } = boundingRect;
-    store.dispatch(addPathwayCoordinate({ pageX, pageY }, { left, top }));
+    store.dispatch(addCoordinate({ pageX, pageY }, { left, top }));
   }
 }
 
