@@ -18,3 +18,4 @@ of the game.
 - [20th August 2022](./2022-08-20.md)
 - [21th August 2022](./2022-08-21.md)
 - [22th August 2022](./2022-08-22.md)
+- [23th August 2022](./2022-08-23.md)
