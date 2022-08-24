@@ -15,7 +15,11 @@ export function levelEditorSceneComponent (targetElement, state) {
       { label: 'Death', value: 'death' },
       { label: 'Life',  value: 'life'  }
     ];
-    const { mode, place } = state.levelDraft;
+    const { maxEnemies, mode, place, towers } = state.levelDraft;
+		const canShowCanvasOptions =
+			mode !== null &&
+			maxEnemies !== null &&
+			towers.length < maxEnemies;
 
     element.innerHTML = `
       <h2>Level Editor</h2>
@@ -34,35 +38,37 @@ export function levelEditorSceneComponent (targetElement, state) {
         <label for="maxEnemies">
           How many enemies can be sent at maximum?
         </label>
-        <input id="maxEnemies" type="number" min="1" step="1" value="5" />
+        <input id="maxEnemies" type="number" min="1" step="1" value="${maxEnemies}" />
       </div>
-      <div>
-			  <fieldset>
-				  <legend>
-					  What should be placed by clicking on the field?
-					</legend>
-					<input
-					  id="place-pathway"
-						type="radio"
-						name="place"
-						value="pathway"
-						${place === 'pathway' ? 'checked="checked"' : ''}
-					/>
-				  <label for="place-pathway">
-					  Pathway point
-					</label>
-					<input
-					  id="place-tower"
-						type="radio"
-						name="place"
-						value="tower"
-						${place === 'tower' ? 'checked="checked"' : ''}
-					/>
-				  <label for="place-tower">
-						Tower
-					</label>
-				</fieldset>
-			</div>
+			${!canShowCanvasOptions ? '' : `
+        <div>
+			    <fieldset>
+			  	  <legend>
+			  		  What should be placed by clicking on the field?
+			  		</legend>
+			  		<input
+			  		  id="place-pathway"
+			  			type="radio"
+			  			name="place"
+			  			value="pathway"
+			  			${place === 'pathway' ? 'checked="checked"' : ''}
+			  		/>
+			  	  <label for="place-pathway">
+			  		  Pathway point
+			  		</label>
+			  		<input
+			  		  id="place-tower"
+			  			type="radio"
+			  			name="place"
+			  			value="tower"
+			  			${place === 'tower' ? 'checked="checked"' : ''}
+			  		/>
+			  	  <label for="place-tower">
+			  			Tower
+			  		</label>
+			  	</fieldset>
+			  </div>
+			`}
       ${mode === null ? '' : `
 				<div>
           <section data-component="canvas"></section>

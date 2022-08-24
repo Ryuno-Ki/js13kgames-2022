@@ -8,10 +8,13 @@ import { pickLevel } from '../../components/helper.js';
  * @returns {import('./index.js').State}
  */
 export function addCoordinate (state, payload) {
+	const { maxEnemies, place, towers } = state.levelDraft;
+
   const levelDraft = {
     ...state.levelDraft,
-    pathway: state.levelDraft.place === 'pathway' ? updatePathway(state, payload) : state.levelDraft.pathway,
-		towers: state.levelDraft.place === 'tower' ? updateTowers(state, payload) : state.levelDraft.towers,
+    pathway: place === 'pathway' ? updatePathway(state, payload) : state.levelDraft.pathway,
+		place: towers.length < maxEnemies ? state.levelDraft.place : 'pathway',
+		towers: place === 'tower' ? updateTowers(state, payload) : state.levelDraft.towers,
   };
 
   return Object.assign({}, state, { levelDraft });
