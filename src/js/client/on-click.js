@@ -1,5 +1,5 @@
 import { addEntity } from './state/actions/add-entity.js';
-import { addCoordinate } from './state/actions/add-pathway-coordinate.js';
+import { addCoordinate } from './state/actions/add-coordinate.js';
 import { navigateToScene } from './state/actions/navigate-to-scene.js';
 import store from './state/store.js';
 

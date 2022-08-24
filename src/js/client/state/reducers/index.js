@@ -1,7 +1,7 @@
 import { initialState } from '../../data/initial-state.js';
 import {
-  ACTION_ADD_ENTITY,
   ACTION_ADD_COORDINATE,
+  ACTION_ADD_ENTITY,
   ACTION_CHECK_LOOSE_CONDITION,
   ACTION_CHECK_WIN_CONDITION,
   ACTION_CHOOSE_LEVEL,
@@ -16,7 +16,7 @@ import {
   ACTION_UPDATE_RADII
 } from '../../../shared/constants.js';
 import { addEntity } from './add-entity.js';
-import { addCoordinate } from './add-pathway-coordinate.js';
+import { addCoordinate } from './add-coordinate.js';
 import { checkLooseCondition } from './check-loose-condition.js';
 import { checkWinCondition } from './check-win-condition.js';
 import { chooseLevel } from './choose-level.js';
@@ -31,7 +31,7 @@ import { updatePositions } from './update-positions.js';
 import { updateRadii } from './update-radii.js';
 
 /**
- * @typedef {import('../actions/add-entity.js').Action | import('../actions/add-pathway-coordinate.js').Action | import('../actions/check-loose-condition.js').Action | import('../actions/check-win-condition.js').Action | import('../actions/choose-level.js').Action | import('../actions/choose-party.js').Action | import('../actions/navigate-to-scene.js').Action | import('../actions/set-draft-level-max-enemies.js').Action | import('../actions/set-draft-level-mode.js').Action | import('../actions/set-motion-preference.js').Action | import('../actions/set-nickname.js').Action | import('../actions/set-placement-mode.js').Action | import('../actions/update-positions.js').Action | import('../actions/update-radii.js').Action} Action
+ * @typedef {import('../actions/add-entity.js').Action | import('../actions/add-coordinate.js').Action | import('../actions/check-loose-condition.js').Action | import('../actions/check-win-condition.js').Action | import('../actions/choose-level.js').Action | import('../actions/choose-party.js').Action | import('../actions/navigate-to-scene.js').Action | import('../actions/set-draft-level-max-enemies.js').Action | import('../actions/set-draft-level-mode.js').Action | import('../actions/set-motion-preference.js').Action | import('../actions/set-nickname.js').Action | import('../actions/set-placement-mode.js').Action | import('../actions/update-positions.js').Action | import('../actions/update-radii.js').Action} Action
  */
 
 /**
@@ -123,10 +123,10 @@ export function reducer (state, action) {
   }
 
   switch (action.type) {
-    case ACTION_ADD_ENTITY:
-      return addEntity(state, action.payload);
     case ACTION_ADD_COORDINATE:
       return addCoordinate(state, action.payload);
+    case ACTION_ADD_ENTITY:
+      return addEntity(state, action.payload);
     case ACTION_CHECK_LOOSE_CONDITION:
       return checkLooseCondition(state);
     case ACTION_CHECK_WIN_CONDITION:
