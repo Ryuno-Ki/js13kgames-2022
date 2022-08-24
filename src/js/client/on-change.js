@@ -3,6 +3,7 @@ import { chooseLevel } from './state/actions/choose-level.js'; import { choosePa
 import { setDraftLevelMaxEnemies } from './state/actions/set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './state/actions/set-draft-level-mode.js';
 import { setMotionPreference } from './state/actions/set-motion-preference.js';
+import { setPlacementMode } from './state/actions/set-placement-mode.js';
 import { setNickname } from './state/actions/set-nickname.js';
 import store from './state/store.js';
 
@@ -26,6 +27,10 @@ export function onChange (event) {
         return store.dispatch(setNickname(target.value));
       case 'party':
         return store.dispatch(chooseParty(target.value));
+			case 'place-pathway':
+				return store.dispatch(setPlacementMode('pathway'));
+			case 'place-tower':
+				return store.dispatch(setPlacementMode('tower'));
       case 'prefers-reduced-motion-no':
         return store.dispatch(setMotionPreference(false));
       case 'prefers-reduced-motion-yes':

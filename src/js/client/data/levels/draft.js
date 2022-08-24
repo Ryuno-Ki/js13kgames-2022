@@ -6,5 +6,6 @@ export const levelDraft = {
   maxEnemies: null,
   enemies: [],
   pathway: [],
+	place: /** @type {'pathway' | 'tower'} */('pathway'),
   towers: []
 };

@@ -32,6 +32,7 @@ describe('attackComponent', () => {
 				maxEnemies: 0,
 				mode: /** @type {'death' | 'life'} */('life'),
 				pathway: [],
+				place: /** @type {'pathway' | 'tower'} */('pathway'),
 				towers: [],
 				width: 0,
 			},

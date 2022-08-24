@@ -15,7 +15,7 @@ export function levelEditorSceneComponent (targetElement, state) {
       { label: 'Death', value: 'death' },
       { label: 'Life',  value: 'life'  }
     ];
-    const { mode } = state.levelDraft;
+    const { mode, place } = state.levelDraft;
 
     element.innerHTML = `
       <h2>Level Editor</h2>
@@ -36,9 +36,35 @@ export function levelEditorSceneComponent (targetElement, state) {
         </label>
         <input id="maxEnemies" type="number" min="1" step="1" value="5" />
       </div>
+      <div>
+			  <fieldset>
+				  <legend>
+					  What should be placed by clicking on the field?
+					</legend>
+					<input
+					  id="place-pathway"
+						type="radio"
+						name="place"
+						value="pathway"
+						${place === 'pathway' ? 'checked="checked"' : ''}
+					/>
+				  <label for="place-pathway">
+					  Pathway point
+					</label>
+					<input
+					  id="place-tower"
+						type="radio"
+						name="place"
+						value="tower"
+						${place === 'tower' ? 'checked="checked"' : ''}
+					/>
+				  <label for="place-tower">
+						Tower
+					</label>
+				</fieldset>
+			</div>
       ${mode === null ? '' : `
-        <div>
-          TODO: Click for towers
+				<div>
           <section data-component="canvas"></section>
         </div>
       `}
