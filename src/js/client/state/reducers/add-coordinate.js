@@ -4,26 +4,58 @@ import { pickLevel } from '../../components/helper.js';
  * Reducer to update the state with a new pathway coordinate
  *
  * @argument {import('./index.js').State} state
- * @argument {import('../actions/add-pathway-coordinate.js').Action['payload']} payload
+ * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
  * @returns {import('./index.js').State}
  */
 export function addCoordinate (state, payload) {
+  const levelDraft = {
+    ...state.levelDraft,
+    pathway: state.levelDraft.place === 'pathway' ? updatePathway(state, payload) : state.levelDraft.pathway,
+		towers: state.levelDraft.place === 'tower' ? updateTowers(state, payload) : state.levelDraft.towers,
+  };
+
+  return Object.assign({}, state, { levelDraft });
+}
+
+/**
+ * Helper function to update the pathway
+ *
+ * @private
+ * @argument {import('./index.js').State} state
+ * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
+ * @returns {import('./index.js').Pathway}
+ */		
+function updatePathway (state, payload) {
   const level = pickLevel(state);
 
   const { coordinate } = payload;
   const [ x, y ] = coordinate;
 
-  const pathway = [
+	return [
     ...state.levelDraft.pathway,
     [ scaleX(x, level.width), scaleY(y, level.height) ],
   ];
+}
 
-  const levelDraft = {
-    ...state.levelDraft,
-    pathway,
-  };
+/**
+ * Helper function to update the towers
+ *
+ * @private
+ * @argument {import('./index.js').State} state
+ * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
+ * @returns {Array<import('./index.js').Tower>}
+ */		
+function updateTowers (state, payload) {
+  const level = pickLevel(state);
 
-  return Object.assign({}, state, { levelDraft });
+  const { coordinate } = payload;
+  const [ x, y ] = coordinate;
+
+	return state.levelDraft.towers.concat({
+		icon: null,
+    position: [ scaleX(x, level.width), scaleY(y, level.height) ],
+		radius: 4
+	});
 }
 
 /**
