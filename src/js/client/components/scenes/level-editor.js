@@ -15,11 +15,17 @@ export function levelEditorSceneComponent (targetElement, state) {
       { label: 'Death', value: 'death' },
       { label: 'Life',  value: 'life'  }
     ];
-    const { maxEnemies, mode, place, towers } = state.levelDraft;
+    const { maxEnemies, mode, pathway, place, towers } = state.levelDraft;
 		const canShowCanvasOptions =
 			mode !== null &&
 			maxEnemies !== null &&
 			towers.length < maxEnemies;
+
+		const canSave =
+			   mode !== null
+		  && maxEnemies !== null
+		  && towers.length.toString() === maxEnemies
+		  && pathway.length > 2;
 
     element.innerHTML = `
       <h2>Level Editor</h2>
@@ -75,6 +81,9 @@ export function levelEditorSceneComponent (targetElement, state) {
         </div>
       `}
       <nav class="actions">
+			  ${canSave
+				  ? `<button type="button" data-action="save-draft">Save</button>`
+					: ''}
         <button type="button" data-navigate="title-scene">Back to title</button>
       </nav>
     `;

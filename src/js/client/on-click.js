@@ -1,6 +1,7 @@
 import { addEntity } from './state/actions/add-entity.js';
 import { addCoordinate } from './state/actions/add-coordinate.js';
 import { navigateToScene } from './state/actions/navigate-to-scene.js';
+import { saveDraft } from './state/actions/save-draft.js';
 import store from './state/store.js';
 
 /**
@@ -12,6 +13,10 @@ export function onClick (event) {
   const target = /** @type {HTMLElement} */(event.target);
 
   if (target && target.dataset) {
+		if (target.dataset.action) {
+			return store.dispatch(saveDraft());
+		}
+
     if (target.dataset.addEntity) {
       return store.dispatch(
         addEntity(target.dataset.addEntity, target.dataset.index || '')

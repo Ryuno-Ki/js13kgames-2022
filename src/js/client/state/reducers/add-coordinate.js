@@ -13,7 +13,7 @@ export function addCoordinate (state, payload) {
   const levelDraft = {
     ...state.levelDraft,
     pathway: place === 'pathway' ? updatePathway(state, payload) : state.levelDraft.pathway,
-		place: towers.length < maxEnemies ? state.levelDraft.place : 'pathway',
+		place: maxEnemies !== null && towers.length < maxEnemies ? state.levelDraft.place : 'pathway',
 		towers: place === 'tower' ? updateTowers(state, payload) : state.levelDraft.towers,
   };
 
