@@ -1,4 +1,11 @@
 /**
+ * @typedef {object} Circle
+ * @property {number} radius
+ * @property {number} x
+ * @property {number} y
+ */
+
+/**
  * Helper function to pick the current or a draft level from state
  *
  * @argument {import('../state/reducers/index.js').State} state
@@ -30,20 +37,23 @@ export function mapCoordinatesToPath (coordinates) {
 }
 
 // Kudos: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection#circle_collision
-export function detectCircleCollision () {
-  /*
-   * circle2.bind("EnterFrame", () => {
-    const dx = circle1.x - circle2.x;
-    const dy = circle1.y - circle2.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+/**
+ * Detect intersection of two circles
+ *
+ * @argument {Circle} circle1
+ * @argument {Circle} circle2
+ * @returns {boolean}
+ */
+export function detectCircleCollision (circle1, circle2) {
+  const dx = circle1.x - circle2.x;
+  const dy = circle1.y - circle2.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < circle1.radius + circle2.radius) {
-        // collision detected!
-        this.color = "green";
-    } else {
-        // no collision
-        this.color = "blue";
-    }
-});
-*/
+  if (distance < circle1.radius + circle2.radius) {
+    // collision detected!
+		return true;
+  } else {
+    // no collision
+		return false;
+  }
 }
