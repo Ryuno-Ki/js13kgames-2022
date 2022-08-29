@@ -36,6 +36,21 @@ export function mapCoordinatesToPath (coordinates) {
     ].join('');
 }
 
+/**
+ * Compare the player's party with the level mode to determine the role.
+ *
+ * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../state/reducers/index.js').Level | undefined} level
+ * @returns {boolean}
+ */
+export function isPlayerDefender (state, level) {
+	const { party } = state.player;
+	const lvl = level || pickLevel(state);
+	const { mode } = lvl;
+
+	return party === mode;
+}
+
 // Kudos: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection#circle_collision
 /**
  * Detect intersection of two circles

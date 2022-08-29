@@ -1,3 +1,5 @@
+import { isPlayerDefender } from '../../components/helper.js';
+
 /**
  * Reducer to add an entity to the current level as enemy or tower
  *
@@ -36,7 +38,7 @@ function updateLevel (state, level, payload) {
   const entity = state.entities[ party ].find((e) => e.icon === entityIcon)
     || state.entities[ side ].find((e) => e.icon === entityIcon);
 
-  const attackOrDefend = party === level.mode ? 'defend' : 'attack';
+  const attackOrDefend = isPlayerDefender(state, level) ? 'defend' : 'attack';
 
   if (attackOrDefend === 'attack') {
     return {

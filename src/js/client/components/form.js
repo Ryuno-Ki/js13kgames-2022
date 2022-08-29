@@ -1,4 +1,4 @@
-import { pickLevel } from './helper.js';
+import { isPlayerDefender, pickLevel } from './helper.js';
 
 /**
  * Component for rendering a form to allow player to choose entities
@@ -12,7 +12,7 @@ export function formComponent (targetElement, state) {
   const activeLevel = /** @type {number} */(state.activeLevel);
   const { nickname, party } = state.player;
   const { enemies, mode } = pickLevel(state);
-  const attackOrDefend = party === mode ? 'defend' : 'attack';
+  const attackOrDefend = isPlayerDefender(state) ? 'defend' : 'attack';
 
   element.innerHTML = `
     <h2>Level ${activeLevel + 1} (${mode})</h2>
@@ -34,18 +34,39 @@ export function formComponent (targetElement, state) {
  * @returns {string}
  */
 function showAttackOrDefendFormElements (state) {
-  const { party } = state.player;
-  const level = pickLevel(state);
-  const { enemies, maxEnemies, mode, towers } = /** @type {import('../state/reducers/index.js').Level} */(level);
-  const attackOrDefend = party === mode ? 'defend' : 'attack';
-
-  if (attackOrDefend === 'attack') {
-    if (enemies.length >= maxEnemies) {
-      return '';
-    }
-
-    return '<div class="actions" data-component="attack"></div>';
+  if (!isPlayerDefender(state)) {
+		return showAttackFormElements(state);
   }
+
+	return showDefendFormElements(state);
+}
+
+/**
+ * Helper function to show attack component
+ *
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {string}
+ */
+function showAttackFormElements (state) {
+  const level = pickLevel(state);
+  const { enemies, maxEnemies } = /** @type {import('../state/reducers/index.js').Level} */(level);
+
+  if (enemies.length >= maxEnemies) {
+    return '';
+  }
+
+  return '<div class="actions" data-component="attack"></div>';
+}
+
+/**
+ * Helper function to show defend component
+ *
+ * @argument {import('../state/reducers/index.js').State} state
+ * @returns {string}
+ */
+function showDefendFormElements (state) {
+  const level = pickLevel(state);
+  const { enemies, towers } = /** @type {import('../state/reducers/index.js').Level} */(level);
 
   if (enemies.length >= towers.length) {
     return '';
