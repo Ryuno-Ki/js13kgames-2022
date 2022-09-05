@@ -13,12 +13,12 @@ export const initialState = {
   hasLost: false,
   entities: {
     death,
-    // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
     life,
   },
   levelDraft,
   levels,
   player: {
+		life: 1,
     nickname: null,
     party: null,
   },

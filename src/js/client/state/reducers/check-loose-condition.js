@@ -5,7 +5,7 @@
  * @returns {import('./index.js').State}
  */
 export function checkLooseCondition (state) {
-  const hasLost = false;
+  const hasLost = player.life === 0;
   let activeScene = state.activeScene;
 
   if (hasLost) {

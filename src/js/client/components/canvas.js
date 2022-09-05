@@ -12,6 +12,7 @@ export function canvasComponent (targetElement, state) {
   const { height, width } = pickLevel(state);
 
   element.innerHTML = `
+	  <div>Player life: ${state.player.life}</div>
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid meet"

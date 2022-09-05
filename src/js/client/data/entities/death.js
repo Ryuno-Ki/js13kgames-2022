@@ -1,3 +1,4 @@
+// Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
 export const death = [{
   icon: '🪔',
   life: 1,
