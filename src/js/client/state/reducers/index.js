@@ -2,6 +2,7 @@ import { initialState } from '../../data/initial-state.js';
 import {
   ACTION_ADD_COORDINATE,
   ACTION_ADD_ENTITY,
+	ACTION_CHECK_COLLISIONS,
   ACTION_CHECK_LOOSE_CONDITION,
   ACTION_CHECK_WIN_CONDITION,
   ACTION_CHOOSE_LEVEL,
@@ -18,6 +19,7 @@ import {
 } from '../../../shared/constants.js';
 import { addEntity } from './add-entity.js';
 import { addCoordinate } from './add-coordinate.js';
+import { checkCollisions } from './check-collisions.js';
 import { checkLooseCondition } from './check-loose-condition.js';
 import { checkWinCondition } from './check-win-condition.js';
 import { chooseLevel } from './choose-level.js';
@@ -129,6 +131,8 @@ export function reducer (state, action) {
       return addCoordinate(state, action.payload);
     case ACTION_ADD_ENTITY:
       return addEntity(state, action.payload);
+		case ACTION_CHECK_COLLISIONS:
+		  return checkCollisions(state);
     case ACTION_CHECK_LOOSE_CONDITION:
       return checkLooseCondition(state);
     case ACTION_CHECK_WIN_CONDITION:

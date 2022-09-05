@@ -1,6 +1,7 @@
 import { applyToDOM } from './apply-to-dom.js';
 import { APP_SELECTOR } from './constants.js';
 import * as componentRegistry from './registry.js';
+import { checkCollisions } from './state/actions/check-collisions.js';
 import { checkLooseCondition } from './state/actions/check-loose-condition.js';
 import { checkWinCondition } from './state/actions/check-win-condition.js';
 import { updatePositions } from './state/actions/update-positions.js';
@@ -22,6 +23,7 @@ export function step () {
 
   store.dispatch(updatePositions());
   store.dispatch(updateRadii());
+	store.dispatch(checkCollisions());
   store.dispatch(checkLooseCondition());
   store.dispatch(checkWinCondition());
 
