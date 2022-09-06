@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiDom from 'chai-dom';
 import { JSDOM } from 'jsdom';
 
+import { initialState } from '../data/initial-state.js';
 import { attackComponent } from './attack.js';
 
 chai.use(chaiDom);
@@ -18,33 +19,7 @@ describe('attackComponent', () => {
 	  // Arrange
 	  const document = prepareDocument();
 	  const targetElement = document.createElement('div');
-		const state = {
-			activeLevel: null,
-			activeScene: /** @type {import('./wrapper.js').Scene} */('level-scene'),
-			entities: {
-				death: [],
-				life: [],
-			},
-			levelDraft: {
-				begin: null,
-				enemies: [],
-				height: 0,
-				maxEnemies: 0,
-				mode: /** @type {'death' | 'life'} */('life'),
-				pathway: [],
-				place: /** @type {'pathway' | 'tower'} */('pathway'),
-				towers: [],
-				width: 0,
-			},
-			levels: [],
-			player: {
-				nickname: null,
-				party: null,
-			},
-			settings: {
-				prefersReducedMotion: false,
-			},
-		};
+		const state = Object.assign({}, initialState, { activeLevel: 1 });
 
 	  // Act
 	  const component = attackComponent(targetElement, state);
