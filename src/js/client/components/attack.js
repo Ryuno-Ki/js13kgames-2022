@@ -8,7 +8,7 @@ import { pickLevel } from './helper.js';
  * @returns {HTMLElement}
  */
 export function attackComponent (targetElement, state) {
-  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
+  const element = /** @type {HTMLDivElement} */(targetElement.cloneNode(true));
   const level = pickLevel(state);
   const { mode } = /** @type {import('../state/reducers/index.js').Level} */(level);
   const partyEntities = state.entities[ mode ];
