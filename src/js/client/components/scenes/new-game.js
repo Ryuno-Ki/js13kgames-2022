@@ -2,7 +2,7 @@
  * Component to render new game scene if active
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../../state/reducers/index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function newGameSceneComponent (targetElement, state) {
@@ -67,7 +67,7 @@ export function newGameSceneComponent (targetElement, state) {
  * Helper function to check whether all pre-conditions are met to start playing
  *
  * @private
- * @argument {import('../../state/reducers/index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @returns {boolean}
  */
 function isReadyForPlay (state) {

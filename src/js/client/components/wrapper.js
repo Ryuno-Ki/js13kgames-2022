@@ -11,7 +11,7 @@ import '../../../css/main.css';
 /**
  * Component to create wrapping element around all others.
  * @argument {HTMLDivElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  */
 export function wrapperComponent (targetElement, state) {
   const element = /** @type {HTMLDivElement} */(targetElement.cloneNode(true));

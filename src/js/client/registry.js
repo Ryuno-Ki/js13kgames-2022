@@ -3,7 +3,7 @@ const registry = new Map();
 /**
  * @typedef {function} Component
  * @argument {HTMLElement} targetElement
- * @argument {import('./state/reducers/index.js').State} state
+ * @argument {import('./data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 
@@ -21,7 +21,7 @@ export function add (name, component) {
  * Renders a component
  *
  * @argument {HTMLElement} root
- * @argument {import('./state/reducers/index.js').State} state
+ * @argument {import('./data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function render (root, state) {
@@ -51,7 +51,7 @@ function renderWrapper (component) {
    *
    * @private
    * @argument {HTMLElement} targetElement
-   * @argument {import('./state/reducers/index.js').State} state
+   * @argument {import('./data/initial-state.js').State} state
    * @returns {HTMLElement}
    */
   return function (targetElement, state) {

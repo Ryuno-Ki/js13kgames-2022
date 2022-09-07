@@ -2,7 +2,7 @@
  * Component to render the about scene if active
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../../state/reducers/index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function aboutSceneComponent (targetElement, state) {

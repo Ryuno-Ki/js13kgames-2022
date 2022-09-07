@@ -1,8 +1,8 @@
 /**
  * Reducer to update position of all enemies on the active level
  *
- * @argument {import('./index.js').State} state
- * @returns {import('./index.js').State}
+ * @argument {import('../../data/initial-state.js').State} state
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function updatePositions (state) {
   const levels = state.levels.map(function (level) {
@@ -32,14 +32,14 @@ export function updatePositions (state) {
  *
  * @private
  * @argument {object} config
- * @argument {import('./index.js').Enemy} config.enemy
- * @argument {import('./index.js').Pathway} config.pathway
+ * @argument {import('../../data/initial-state.js').Enemy} config.enemy
+ * @argument {import('../../data/initial-state.js').Pathway} config.pathway
  * @returns {Array<number>}
  */
 function computeNewPosition ({ enemy, pathway }) {
   const [ start, end, t ] = getLineSegment(enemy, pathway);
-  const [ x0, y0 ] = /** @type {import('./index.js').LineSegment} */(start);
-  const [ x1, y1 ] = /** @type {import('./index.js').LineSegment} */(end);
+  const [ x0, y0 ] = /** @type {import('../../data/initial-state.js').LineSegment} */(start);
+  const [ x1, y1 ] = /** @type {import('../../data/initial-state.js').LineSegment} */(end);
 
   // @ts-ignore
   const x = clamp((1 - t) * x0 + t * x1, x0, x1);
@@ -53,9 +53,9 @@ function computeNewPosition ({ enemy, pathway }) {
  * Helper function to determine a single line segment
  *
  * @private
- * @argument {import('./index.js').Enemy} enemy
- * @argument {import('./index.js').Pathway} pathway
- * @returns {Array<import('./index.js').LineSegment | number>}
+ * @argument {import('../../data/initial-state.js').Enemy} enemy
+ * @argument {import('../../data/initial-state.js').Pathway} pathway
+ * @returns {Array<import('../../data/initial-state.js').LineSegment | number>}
  */
 function getLineSegment (enemy, pathway) {
   const now = Date.now().valueOf();
@@ -109,7 +109,7 @@ function clamp (current, lower, upper) {
  *
  * @private
  * @argument {number} now
- * @argument {import('./index.js').Enemy} enemy
+ * @argument {import('../../data/initial-state.js').Enemy} enemy
  * @returns {number}
  */
 function getProgressInTime (now, enemy) {
@@ -125,7 +125,7 @@ function getProgressInTime (now, enemy) {
  * Helper function to compute the progress in space.
  *
  * @private
- * @argument {import('./index.js').Pathway} pathway
+ * @argument {import('../../data/initial-state.js').Pathway} pathway
  * @returns {Array<number>}
  */
 function getProgressInSpace (pathway) {
@@ -148,7 +148,7 @@ function getProgressInSpace (pathway) {
  * Helper function to compute the total Euclidean length of the pathway
  *
  * @private
- * @argument {import('./index.js').Pathway} pathway
+ * @argument {import('../../data/initial-state.js').Pathway} pathway
  * @returns {number}
  */
 function getTotalPathwayLength (pathway) {

@@ -18,7 +18,26 @@ declare class Store {
     /**
      * Return the current state.
      *
-     * @returns {import('./reducers/index.js').State}
+     * @returns {import('../data/initial-state.js').State}
      */
-    getState(): import('./reducers/index.js').State;
+    getState(): import('../data/initial-state.js').State;
+    /**
+     * Depending on the action apply side effects if it makes sense.
+     *
+     * @private
+   * @argument {import('./reducers/index.js').Action} action
+     */
+    private _applySideEffects;
+    /**
+     * Restore saved state if possible
+     *
+     * @private
+     */
+    private _hydrateFromWebStorage;
+    /**
+     * Save current state to localStorage if possible
+     *
+     * @private
+     */
+    private _saveStateToWebStorage;
 }

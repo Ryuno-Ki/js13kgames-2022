@@ -3,9 +3,9 @@ import { pickLevel } from '../../components/helper.js';
 /**
  * Reducer to update the state with a new pathway coordinate
  *
- * @argument {import('./index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
- * @returns {import('./index.js').State}
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function addCoordinate (state, payload) {
 	const { maxEnemies, place, towers } = state.levelDraft;
@@ -24,9 +24,9 @@ export function addCoordinate (state, payload) {
  * Helper function to update the pathway
  *
  * @private
- * @argument {import('./index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
- * @returns {import('./index.js').Pathway}
+ * @returns {import('../../data/initial-state.js').Pathway}
  */		
 function updatePathway (state, payload) {
   const level = pickLevel(state);
@@ -44,9 +44,9 @@ function updatePathway (state, payload) {
  * Helper function to update the towers
  *
  * @private
- * @argument {import('./index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../actions/add-coordinate.js').Action['payload']} payload
- * @returns {Array<import('./index.js').Tower>}
+ * @returns {Array<import('../../data/initial-state.js').Tower>}
  */		
 function updateTowers (state, payload) {
   const level = pickLevel(state);

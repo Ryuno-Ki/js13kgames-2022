@@ -1,16 +1,16 @@
-import{ isPlayerDefending, pickLevel } from '../../components/helper.js';
+import{ isPlayerDefender, pickLevel } from '../../components/helper.js';
 
 /**
  * Reducer to update the state on meeting a win condition
  *
- * @argument {import('./index.js').State} state
- * @returns {import('./index.js').State}
+ * @argument {import('../../data/initial-state.js').State} state
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function checkWinCondition (state) {
 	const { player } = state;
 	const level = pickLevel(state);
 
-  const hasWon = isPlayerDefending(state, level)
+  const hasWon = isPlayerDefender(state, level)
 		? level.enemies.filter(function (enemy) {
 		  return enemy.life > 0;
 	  }).length === 0 && player.life > 0

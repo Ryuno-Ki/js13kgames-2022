@@ -1,6 +1,4 @@
-import {
-	ACTION_NAVIGATE_TO_SCENE
-} from '../../shared/constants.js';
+import { ACTION_NAVIGATE_TO_SCENE } from '../../shared/constants.js';
 import { STORAGE_KEY } from '../constants.js';
 import { reducer } from './reducers/index.js';
 
@@ -23,12 +21,13 @@ class Store {
    */
   async dispatch (action) {
     this.state = this.reducer(this.state, action);
+    this._applySideEffects(action);
   }
 
   /**
    * Return the current state.
    *
-   * @returns {import('./reducers/index.js').State}
+   * @returns {import('../data/initial-state.js').State}
    */
   getState () {
     return this.state;

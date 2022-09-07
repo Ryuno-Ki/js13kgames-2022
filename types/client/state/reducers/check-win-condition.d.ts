@@ -1,7 +1,7 @@
 /**
  * Reducer to update the state on meeting a win condition
  *
- * @argument {import('./index.js').State} state
- * @returns {import('./index.js').State}
+ * @argument {import('../../data/initial-state.js').State} state
+ * @returns {import('../../data/initial-state.js').State}
  */
-export function checkWinCondition(state: import('./index.js').State): import('./index.js').State;
+export function checkWinCondition(state: import('../../data/initial-state.js').State): import('../../data/initial-state.js').State;

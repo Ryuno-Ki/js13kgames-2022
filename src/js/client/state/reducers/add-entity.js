@@ -3,9 +3,9 @@ import { isPlayerDefender } from '../../components/helper.js';
 /**
  * Reducer to add an entity to the current level as enemy or tower
  *
- * @argument {import('./index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../actions/add-entity.js').Action['payload']} payload
- * @returns {import('./index.js').State}
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function addEntity (state, payload) {
   const levels = state.levels.map((level, index) => {
@@ -23,10 +23,10 @@ export function addEntity (state, payload) {
  * Helper function to update a single level
  *
  * @private
- * @argument {import('./index.js').State} state
- * @argument {import('./index.js').Level} level
+ * @argument {import('../../data/initial-state.js').State} state
+ * @argument {import('../../data/initial-state.js').Level} level
  * @argument {import('../actions/add-entity.js').Action['payload']} payload
- * @returns {import('./index.js').Level}
+ * @returns {import('../../data/initial-state.js').Level}
  */
 function updateLevel (state, level, payload) {
   const { entity: entityIcon, index } = payload;
@@ -61,9 +61,9 @@ function updateLevel (state, level, payload) {
  * Helper function to update all enemies
  *
  * @private
- * @argument {import('./index.js').Level} level
- * @argument {import('./index.js').Enemy} entity
- * @returns {Array<import('./index.js').Enemy>}
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @argument {import('../../data/initial-state.js').Enemy} entity
+ * @returns {Array<import('../../data/initial-state.js').Enemy>}
  */
 function updateEnemies (level, entity) {
   const [ x, y ] = level.pathway[ 0 ];
@@ -82,10 +82,10 @@ function updateEnemies (level, entity) {
  * Helper function to update all towers.
  *
  * @private
- * @argument {import('./index.js').Level} level
- * @argument {import('./index.js').Enemy} entity
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @argument {import('../../data/initial-state.js').Enemy} entity
  * @argument {number} index
- * @returns {Array<import('./index.js').Tower>}
+ * @returns {Array<import('../../data/initial-state.js').Tower>}
  */
 function updateTowers (level, entity, index) {
   return level.towers.map(function (tower, i) {

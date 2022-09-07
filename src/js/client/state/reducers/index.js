@@ -39,99 +39,20 @@ import { updateRadii } from './update-radii.js';
  */
 
 /**
- * @typedef {object} Entity
- * @property {string} icon
- * @property {number} radius
- * @property {number} speed
- */
-
-/**
- * @typedef {object} Enemy
- * @property {number} begin
- * @property {string} icon
- * @property {Array<number>} position
- * @property {number} radius
- * @property {number} speed
- */
-
-/**
- * @typedef {Array<number>} LineSegment
- */
-
-/**
- * @typedef {Array<LineSegment>} Pathway
- */
-
-/**
- * @typedef {object} Tower
- * @property {string | null} icon
- * @property {Array<number>} position
- * @property {number} radius
- */
-
-/**
- * @typedef {object} DraftLevel
- * @property {number | null} begin
- * @property {Array<Enemy>} enemies
- * @property {number} height
- * @property {number | null} maxEnemies
- * @property {'death' | 'life' | null} mode
- * @property {Pathway} pathway
- * @property {'pathway' | 'tower'} place
- * @property {Array<Tower>} towers
- * @property {number} width
- */
-
-/**
- * @typedef {object} Level
- * @property {number | null} begin
- * @property {Array<Enemy>} enemies
- * @property {number} height
- * @property {number} maxEnemies
- * @property {'death' | 'life'} mode
- * @property {Pathway} pathway
- * @property {Array<Tower>} towers
- * @property {number} width
- */
-
-/**
- * @typedef {object} Player
- * @property {number} life
- * @property {string | null} nickname
- * @property {'death' | 'life' | null} party
- */
-
-/**
- * @typedef {object} State
- * @property {number | null} activeLevel
- * @property {import('../../components/wrapper.js').Scene} activeScene
- * @property {object} entities
- * @property {Array<Entity>} entities.death
- * @property {Array<Entity>} entities.life
- * @property {DraftLevel} levelDraft
- * @property {Array<Level>} levels
- * @property {Player} player
- * @property {object} settings
- * @property {boolean} settings.prefersReducedMotion
- */
-
-/**
  * Reducer to compute the new state
  *
- * @argument {State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {Action} action
- * @returns {State}
+ * @returns {import('../../data/initial-state.js').State}
  */
-export function reducer (state, action) {
-  if (typeof state === 'undefined') {
-    return initialState;
-  }
+export function reducer (state = initialState, action) {
+  const { payload, type } = action;
 
-  switch (action.type) {
+  switch (type) {
     case ACTION_ADD_COORDINATE:
-      return addCoordinate(state, action.payload);
+      return addCoordinate(state, payload);
     case ACTION_ADD_ENTITY:
-      return addEntity(state, action.payload);
+      return addEntity(state, payload);
     case ACTION_CHECK_COLLISIONS:
       return checkCollisions(state);
     case ACTION_CHECK_LOOSE_CONDITION:
@@ -139,23 +60,23 @@ export function reducer (state, action) {
     case ACTION_CHECK_WIN_CONDITION:
       return checkWinCondition(state);
     case ACTION_CHOOSE_LEVEL:
-      return chooseLevel(state, action.payload);
+      return chooseLevel(state, payload);
     case ACTION_CHOOSE_PARTY:
-      return chooseParty(state, action.payload);
+      return chooseParty(state, payload);
     case ACTION_NAVIGATE_TO_SCENE:
-      return navigateToScene(state, action.payload);
+      return navigateToScene(state, payload);
     case ACTION_SAVE_DRAFT:
-      return saveDraft(state, action.payload);
+      return saveDraft(state);
     case ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES:
-      return setDraftLevelMaxEnemies(state, action.payload);
+      return setDraftLevelMaxEnemies(state, payload);
     case ACTION_SET_DRAFT_LEVEL_MODE:
-      return setDraftLevelMode(state, action.payload);
+      return setDraftLevelMode(state, payload);
     case ACTION_SET_MOTION_PREFERENCE:
-      return setMotionPreference(state, action.payload);
+      return setMotionPreference(state, payload);
     case ACTION_SET_NICKAME:
-      return setNickname(state, action.payload);
+      return setNickname(state, payload);
     case ACTION_SET_PLACEMENT_MODE:
-      return setPlacementMode(state, action.payload);
+      return setPlacementMode(state, payload);
     case ACTION_UPDATE_POSITIONS:
       return updatePositions(state);
     case ACTION_UPDATE_RADII:

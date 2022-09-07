@@ -2,7 +2,7 @@
  * Component to render level scene if active
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../../state/reducers/index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
-export function levelSceneComponent(targetElement: HTMLElement, state: import('../../state/reducers/index.js').State): HTMLElement;
+export function levelSceneComponent(targetElement: HTMLElement, state: import('../../data/initial-state.js').State): HTMLElement;

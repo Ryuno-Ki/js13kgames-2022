@@ -3,9 +3,9 @@ import { isPlayerDefender, pickLevel } from '../../components/helper.js';
 /**
  * Reducer to update the state with the active scene.
  *
- * @argument {import('./index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../actions/navigate-to-scene.js').Action['payload']} payload
- * @returns {import('./index.js').State}
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function navigateToScene (state, payload) {
   const { scene } = payload;

@@ -19,7 +19,7 @@ describe('canvasComponent', () => {
     // Arrange
     const document = prepareDocument();
     const targetElement = document.createElement('div');
-    const state = /** @type {import('../state/reducers/index.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
+    const state = /** @type {import('../data/initial-state.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
 
     // Act
     const component = canvasComponent(targetElement, state);
@@ -32,7 +32,7 @@ describe('canvasComponent', () => {
     // Arrange
     const document = prepareDocument();
     const targetElement = document.createElement('div');
-    const state = /** @type {import('../state/reducers/index.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
+    const state = /** @type {import('../data/initial-state.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
 
     // Act
     const component = canvasComponent(targetElement, state);
@@ -45,7 +45,7 @@ describe('canvasComponent', () => {
     // Arrange
     const document = prepareDocument();
     const targetElement = document.createElement('div');
-    const state = /** @type {import('../state/reducers/index.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
+    const state = /** @type {import('../data/initial-state.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
 
     // Act
     const component = canvasComponent(targetElement, state);

@@ -4,7 +4,7 @@ import { isPlayerDefender, pickLevel } from './helper.js';
  * Component for rendering a form to allow player to choose entities
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function formComponent (targetElement, state) {
@@ -30,7 +30,7 @@ export function formComponent (targetElement, state) {
 /**
  * Helper function to show either attack or defend component
  *
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {string}
  */
 function showAttackOrDefendFormElements (state) {
@@ -44,12 +44,12 @@ function showAttackOrDefendFormElements (state) {
 /**
  * Helper function to show attack component
  *
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {string}
  */
 function showAttackFormElements (state) {
   const level = pickLevel(state);
-  const { enemies, maxEnemies } = /** @type {import('../state/reducers/index.js').Level} */(level);
+  const { enemies, maxEnemies } = /** @type {import('../data/initial-state.js').Level} */(level);
 
   if (enemies.length >= maxEnemies) {
     return '';
@@ -61,12 +61,12 @@ function showAttackFormElements (state) {
 /**
  * Helper function to show defend component
  *
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {string}
  */
 function showDefendFormElements (state) {
   const level = pickLevel(state);
-  const { enemies, towers } = /** @type {import('../state/reducers/index.js').Level} */(level);
+  const { enemies, towers } = /** @type {import('../data/initial-state.js').Level} */(level);
 
   if (enemies.length >= towers.length) {
     return '';

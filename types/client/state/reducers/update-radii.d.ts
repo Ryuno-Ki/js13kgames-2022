@@ -1,9 +1,9 @@
 /**
  * Update all radii on the current level.
  *
- * @argument {import('./index.js').State} state
- * return {import('./index.js').State} the new State
+ * @argument {import('../../data/initial-state.js').State} state
+ * return {import('../../data/initial-state.js').State} the new State
  */
-export function updateRadii(state: import('./index.js').State): import("./index.js").State & {
-    levels: import("./index.js").Level[];
+export function updateRadii(state: import('../../data/initial-state.js').State): import("../../data/initial-state.js").State & {
+    levels: import("../../data/initial-state.js").Level[];
 };

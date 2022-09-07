@@ -8,8 +8,8 @@
 /**
  * Helper function to pick the current or a draft level from state
  *
- * @argument {import('../state/reducers/index.js').State} state
- * @returns {import('../state/reducers/index.js').DraftLevel | import('../state/reducers/index.js').Level}
+ * @argument {import('../data/initial-state.js').State} state
+ * @returns {import('../data/initial-state.js').DraftLevel | import('../data/initial-state.js').Level}
  */
 export function pickLevel (state) {
   if (state.activeLevel === null) {
@@ -22,7 +22,7 @@ export function pickLevel (state) {
 /**
  * Map pathway coordinates to a SVG path string
  *
- * @argument {import('../state/reducers/index.js').Pathway} coordinates
+ * @argument {import('../data/initial-state.js').Pathway} coordinates
  * @returns {string}
  */
 export function mapCoordinatesToPath (coordinates) {
@@ -39,8 +39,8 @@ export function mapCoordinatesToPath (coordinates) {
 /**
  * Compare the player's party with the level mode to determine the role.
  *
- * @argument {import('../state/reducers/index.js').State} state
- * @argument {import('../state/reducers/index.js').Level | undefined} level
+ * @argument {import('../data/initial-state.js').State} state
+ * @argument {import('../data/initial-state.js').Level | import('../data/initial-state.js').DraftLevel} [level]
  * @returns {boolean}
  */
 export function isPlayerDefender (state, level) {

@@ -1,11 +1,11 @@
 /**
  * Reducer to update the state on meeting the game over condition
  *
- * @argument {import('./index.js').State} state
- * @returns {import('./index.js').State}
+ * @argument {import('../../data/initial-state.js').State} state
+ * @returns {import('../../data/initial-state.js').State}
  */
 export function checkLooseCondition (state) {
-  const hasLost = player.life === 0;
+  const hasLost = state.player.life === 0;
   let activeScene = state.activeScene;
 
   if (hasLost) {

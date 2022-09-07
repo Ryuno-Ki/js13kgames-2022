@@ -4,7 +4,7 @@ import { pickLevel } from './helper.js';
  * Component to render a level in SVG
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function levelComponent (targetElement, state) {

@@ -2,7 +2,7 @@
  * Component to render level editor scene if active
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../../state/reducers/index.js').State} state
+ * @argument {import('../../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function levelEditorSceneComponent (targetElement, state) {
@@ -24,7 +24,7 @@ export function levelEditorSceneComponent (targetElement, state) {
 		const canSave =
 			   mode !== null
 		  && maxEnemies !== null
-		  && towers.length.toString() === maxEnemies
+		  && towers.length.toString() === maxEnemies.toString()
 		  && pathway.length > 2;
 
     element.innerHTML = `

@@ -7,8 +7,8 @@
 /**
  * Component to create wrapping element around all others.
  * @argument {HTMLDivElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  */
-export function wrapperComponent(targetElement: HTMLDivElement, state: import('../state/reducers/index.js').State): HTMLDivElement;
+export function wrapperComponent(targetElement: HTMLDivElement, state: import('../data/initial-state.js').State): HTMLDivElement;
 export type Scene = 'about-scene' | 'game-over-scene' | 'level-scene' | 'level-editor-scene' | 'new-game-scene' | 'settings-scene' | 'title-scene' | 'win-scene';
 export type Scenes = Array<Scene>;

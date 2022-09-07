@@ -4,7 +4,7 @@ import { pickLevel } from './helper.js';
  * Component to render the buttons to assign entities for towers
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function defendComponent (targetElement, state) {
@@ -28,7 +28,7 @@ export function defendComponent (targetElement, state) {
  * Helper function to render all buttons for choosing a tower entity
  *
  * @private
- * @argument {Array<import('../state/reducers/index.js').Entity>} choices
+ * @argument {Array<import('../data/initial-state.js').Entity>} choices
  * @argument {number} index
  * @returns {string}
  */

@@ -1,10 +1,16 @@
 import{ detectCircleCollision, pickLevel } from '../../components/helper.js';
 
+/**
+ * Reducer to check for collisions between enemies and towers and end of pathway.
+ *
+ * @argument {import('../../data/initial-state.js').State} state
+ * @returns {import('../../data/initial-state.js').State}
+ */
 export function checkCollisions (state) {
 	// This is checking for collisions with the pathway end right now
 	// Next is a check with towers
-	const level = pickLevel(state);
-	const { enemies, pathway } = level;
+	const lvl = pickLevel(state);
+	const { pathway } = lvl;
 	const lastSegment = pathway[ pathway.length - 1 ];
 	const circle2 = {
 		radius: 2,
@@ -12,7 +18,7 @@ export function checkCollisions (state) {
 		y: lastSegment[ 1 ],
 	};
 
-	return enemies
+	const enemies = lvl.enemies
 		.map(function (enemy) {
 			return {
 				radius: enemy.radius,
@@ -24,5 +30,10 @@ export function checkCollisions (state) {
 			return detectCircleCollision(circle1, circle2);
 		});
 
-	return Object.assign({}, state);
+  const level = {
+    ...lvl,
+    enemies,
+  };
+
+	return Object.assign({}, state, { level });
 }

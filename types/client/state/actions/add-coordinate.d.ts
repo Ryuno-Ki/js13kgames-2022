@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Action
- * @property {import('../../../shared/constants.js').ACTION_ADD_PATHWAY_COORDINATE} type
+ * @property {import('../../../shared/constants.js').ACTION_ADD_COORDINATE} type
  * @property {object} payload
  * @property {Array<number>} payload.coordinate
  */
@@ -15,7 +15,7 @@
  * @argument {number} boundingRect.top
  * @returns {Action}
  */
-export function addPathwayCoordinate({ pageX, pageY }: {
+export function addCoordinate({ pageX, pageY }: {
     pageX: number;
     pageY: number;
 }, { left, top }: {

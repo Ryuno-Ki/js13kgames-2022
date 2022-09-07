@@ -4,13 +4,13 @@ import { pickLevel } from './helper.js';
  * Component to pick entities for attack
  *
  * @argument {HTMLElement} targetElement
- * @argument {import('../state/reducers/index.js').State} state
+ * @argument {import('../data/initial-state.js').State} state
  * @returns {HTMLElement}
  */
 export function attackComponent (targetElement, state) {
   const element = /** @type {HTMLDivElement} */(targetElement.cloneNode(true));
   const level = pickLevel(state);
-  const { mode } = /** @type {import('../state/reducers/index.js').Level} */(level);
+  const { mode } = /** @type {import('../data/initial-state.js').Level} */(level);
   const partyEntities = state.entities[ mode ];
 
   element.innerHTML = `

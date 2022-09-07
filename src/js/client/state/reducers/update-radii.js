@@ -1,8 +1,8 @@
 /**
  * Update all radii on the current level.
  *
- * @argument {import('./index.js').State} state
- * return {import('./index.js').State} the new State
+ * @argument {import('../../data/initial-state.js').State} state
+ * return {import('../../data/initial-state.js').State} the new State
  */
 export function updateRadii (state) {
   let levels = state.levels;
@@ -24,8 +24,8 @@ export function updateRadii (state) {
  * Helper function to update a single level
  *
  * @private
- * @argument {import('./index.js').Level} level
- * @returns {import('./index.js').Level}
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @returns {import('../../data/initial-state.js').Level}
  */
 function updateLevel (level) {
   const baseRadius = 2;

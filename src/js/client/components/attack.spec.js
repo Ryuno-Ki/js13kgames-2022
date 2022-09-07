@@ -19,7 +19,7 @@ describe('attackComponent', () => {
     // Arrange
     const document = prepareDocument();
     const targetElement = document.createElement('div');
-    const state = /** @type {import('../state/reducers/index.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
+    const state = /** @type {import('../data/initial-state.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
 
     // Act
     const component = attackComponent(targetElement, state);
@@ -32,7 +32,7 @@ describe('attackComponent', () => {
     // Arrange
     const document = prepareDocument();
     const targetElement = document.createElement('div');
-    const state = /** @type {import('../state/reducers/index.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
+    const state = /** @type {import('../data/initial-state.js').State} */(Object.assign({}, initialState, { activeLevel: 1 }));
     const mode = state.levels[ 0 ].mode;
     const enemies = state.entities[ mode ];
 
