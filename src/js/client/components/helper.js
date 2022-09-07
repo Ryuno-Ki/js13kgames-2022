@@ -44,11 +44,11 @@ export function mapCoordinatesToPath (coordinates) {
  * @returns {boolean}
  */
 export function isPlayerDefender (state, level) {
-	const { party } = state.player;
-	const lvl = level || pickLevel(state);
-	const { mode } = lvl;
+  const { party } = state.player;
+  const lvl = level || pickLevel(state);
+  const { mode } = lvl;
 
-	return party === mode;
+  return party === mode;
 }
 
 // Kudos: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection#circle_collision
@@ -66,9 +66,9 @@ export function detectCircleCollision (circle1, circle2) {
 
   if (distance < circle1.radius + circle2.radius) {
     // collision detected!
-		return true;
+    return true;
   } else {
     // no collision
-		return false;
+    return false;
   }
 }

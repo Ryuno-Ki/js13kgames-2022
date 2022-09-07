@@ -7,33 +7,39 @@ import{ detectCircleCollision, pickLevel } from '../../components/helper.js';
  * @returns {import('../../data/initial-state.js').State}
  */
 export function checkCollisions (state) {
-	// This is checking for collisions with the pathway end right now
-	// Next is a check with towers
-	const lvl = pickLevel(state);
-	const { pathway } = lvl;
-	const lastSegment = pathway[ pathway.length - 1 ];
-	const circle2 = {
-		radius: 2,
-		x: lastSegment[ 0 ],
-		y: lastSegment[ 1 ],
-	};
+  // FIXME: Figure out why this guard is needed
+  // Console reports, that lastSegment is undefined, but it starts in win scene
+  if (state.activeScene !== 'level-scene') {
+    return Object.assign({}, state);
+  }
 
-	const enemies = lvl.enemies
-		.map(function (enemy) {
-			return {
-				radius: enemy.radius,
-				x: enemy.position[ 0 ],
-				y: enemy.position[ 1 ],
-			};
-	  })
-		.some(function (circle1) {
-			return detectCircleCollision(circle1, circle2);
-		});
+  // This is checking for collisions with the pathway end right now
+  // Next is a check with towers
+  const lvl = pickLevel(state);
+  const { pathway } = lvl;
+  const lastSegment = pathway[ pathway.length - 1 ];
+  const circle2 = {
+    radius: 2,
+    x: lastSegment[ 0 ],
+    y: lastSegment[ 1 ],
+  };
+
+  const enemies = lvl.enemies
+    .map(function (enemy) {
+      return {
+        radius: enemy.radius,
+        x: enemy.position[ 0 ],
+        y: enemy.position[ 1 ],
+      };
+    })
+    .some(function (circle1) {
+      return detectCircleCollision(circle1, circle2);
+    });
 
   const level = {
     ...lvl,
     enemies,
   };
 
-	return Object.assign({}, state, { level });
+  return Object.assign({}, state, { level });
 }
