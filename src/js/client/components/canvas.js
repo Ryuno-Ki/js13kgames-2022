@@ -8,11 +8,11 @@ import { pickLevel } from './helper.js';
  * @returns {HTMLElement}
  */
 export function canvasComponent (targetElement, state) {
-  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
+  const element = /** @type {HTMLDivElement} */(targetElement.cloneNode(true));
   const { height, width } = pickLevel(state);
 
   element.innerHTML = `
-	  <div>Player life: ${state.player.life}</div>
+    <div>Player life: ${state.player.life}</div>
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid meet"
