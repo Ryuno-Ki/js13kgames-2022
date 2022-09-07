@@ -1,7 +1,7 @@
 import death from './entities/death.json' assert {type: 'json'};
 import life from './entities/life.json' assert {type: 'json'};
 import levelDraft from './levels/draft.json' assert {type: 'json'};
-import { levels } from './levels/index.js';
+import levels from './levels/index.json' assert {type: 'json'};
 
 /**
  * @typedef {object} Entity
@@ -94,13 +94,13 @@ export const initialState = {
   hasWon: false,
   entities: {
     // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
-    death,
-    life,
+    death: /** @type {Array<Entity>} */(death),
+    life: /** @type {Array<Entity>} */(life),
   },
-  levelDraft,
-  levels,
+  levelDraft: /** @type {DraftLevel} */(levelDraft),
+  levels: /** @type {Array<Level>} */(levels),
   player: {
-		life: 1,
+    life: 1,
     nickname: null,
     party: null,
   },
