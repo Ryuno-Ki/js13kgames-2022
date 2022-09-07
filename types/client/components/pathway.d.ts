@@ -1,8 +1,8 @@
 /**
  * Component for rendering the pathway in SVG
  *
- * @argument {HTMLElement} targetElement
+ * @argument {SVGGElement} targetElement
  * @argument {import('../data/initial-state.js').State} state
- * @returns {HTMLElement}
+ * @returns {SVGGElement}
  */
-export function pathwayComponent(targetElement: HTMLElement, state: import('../data/initial-state.js').State): HTMLElement;
+export function pathwayComponent(targetElement: SVGGElement, state: import('../data/initial-state.js').State): SVGGElement;

@@ -3,21 +3,21 @@ import { mapCoordinatesToPath, pickLevel } from './helper.js';
 /**
  * Component for rendering the pathway in SVG
  *
- * @argument {HTMLElement} targetElement
+ * @argument {SVGGElement} targetElement
  * @argument {import('../data/initial-state.js').State} state
- * @returns {HTMLElement}
+ * @returns {SVGGElement}
  */
 export function pathwayComponent (targetElement, state) {
-  const element = /** @type {HTMLElement} */(targetElement.cloneNode(true));
+  const element = /** @type {SVGGElement} */(targetElement.cloneNode(true));
   const stroke = element.dataset.stroke;
 
-  const { pathway } = pickLevel(state);
+  const { mode, pathway } = pickLevel(state);
   const path = mapCoordinatesToPath(pathway);
 
   element.innerHTML = `
-    ${getStartingPoint(pathway)}
+    ${getStartingPoint(mode, pathway)}
     <path d="${path}" stroke="${stroke}" strokeWidth="6" fill="none" />
-    ${getEndpoint(pathway)}
+    ${getEndpoint(mode, pathway)}
   `;
 
   return element;
@@ -27,16 +27,16 @@ export function pathwayComponent (targetElement, state) {
  * Helper function to render the starting point if there is a pathway
  *
  * @private
+ * @argument {import('../data/initial-state.js').Level['mode'] | null} mode
  * @argument {import('../data/initial-state.js').Pathway} pathway
  * @returns {string}
  */
-function getStartingPoint (pathway) {
+function getStartingPoint (mode, pathway) {
   if (pathway.length === 0) {
     return '';
   }
 
-  // TODO: Depends on level mode!
-  const begin = '🪦';
+  const begin = mode === 'life' ? '🛐' : '🪦';
   const [ beginX, beginY ] = pathway[ 0 ];
   return `<text x="${beginX}" y="${beginY}">${begin}</text>`;
 }
@@ -45,16 +45,16 @@ function getStartingPoint (pathway) {
  * Helper function to render the ending point if there is a pathway
  *
  * @private
+ * @argument {import('../data/initial-state.js').Level['mode'] | null} mode
  * @argument {import('../data/initial-state.js').Pathway} pathway
  * @returns {string}
  */
-function getEndpoint (pathway) {
+function getEndpoint (mode, pathway) {
   if (pathway.length < 2) {
     return '';
   }
 
-  // TODO: Depends on level mode!
-  const fin = '🛐';
+  const fin = mode === 'death' ? '🛐' : '🪦';
   const [ finX, finY ] = pathway[ pathway.length - 1 ];
 
   return `<text x="${finX}" y="${finY}">${fin}</text>`;
