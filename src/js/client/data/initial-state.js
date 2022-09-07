@@ -1,6 +1,6 @@
 import death from './entities/death.json' assert {type: 'json'};
 import life from './entities/life.json' assert {type: 'json'};
-import { levelDraft } from './levels/draft.js';
+import levelDraft from './levels/draft.json' assert {type: 'json'};
 import { levels } from './levels/index.js';
 
 /**
