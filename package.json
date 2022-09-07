@@ -27,6 +27,7 @@
   "license": "AGPL-3.0-or-later",
   "type": "module",
   "devDependencies": {
+    "@rollup/plugin-json": "4.1.0",
     "@types/chai": "4.3.3",
     "@types/chai-dom": "0.0.13",
     "@types/jsdom": "20.0.0",

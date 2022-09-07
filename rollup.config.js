@@ -1,5 +1,6 @@
 import css from 'rollup-plugin-css-only';
 import htmlTemplate from 'rollup-plugin-generate-html-template';
+import json from '@rollup/plugin-json';
 import license from 'rollup-plugin-license';
 import { terser } from 'rollup-plugin-terser';
 
@@ -21,10 +22,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.`;
 
 const plugins = process.env.NODE_ENV === 'development'
   ? [
+    json({ namedExports: false }),
     css({ output: 'main.css' }),
     htmlTemplate({ template: './src/single.html', target: './public/index.html' })
   ]
   : [
+    json({ namedExports: false }),
     css({ output: 'main.css' }),
     htmlTemplate({ template: './src/single.html', target: './public/index.html' }),
     terser(),

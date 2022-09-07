@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "lib": ["es2021", "DOM"],
     "moduleResolution": "node",
-    "module": "CommonJS",
+    "module": "ESNext",
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,

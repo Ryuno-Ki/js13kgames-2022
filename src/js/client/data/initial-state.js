@@ -1,4 +1,4 @@
-import { death } from './entities/death.js';
+import death from './entities/death.json' assert {type: 'json'}
 import { life } from './entities/life.js';
 import { levelDraft } from './levels/draft.js';
 import { levels } from './levels/index.js';
@@ -93,6 +93,7 @@ export const initialState = {
   hasLost: false,
   hasWon: false,
   entities: {
+    // Kudos: https://nitter.net/curtastic/status/1558507789118365696#m
     death,
     life,
   },
