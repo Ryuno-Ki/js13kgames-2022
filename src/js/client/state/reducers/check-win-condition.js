@@ -64,7 +64,7 @@ function checkWinConditionForAttacker (state) {
 
   const survivingEnemies = level.enemies.filter((enemy) => enemy.life > 0);
   const winningEnemies = survivingEnemies
-    .map(function (enemy) {
+    .filter(function (enemy) {
       const circle1 = /** @type {import('../../components/helper.js').Circle} */({
         x: enemy.position[ 0 ],
         y: enemy.position[ 1 ],
