@@ -47,8 +47,44 @@ function updateLevel (state, level) {
   return {
     ...level,
     begin: Date.now().valueOf(),
+    enemies: updateEnemies(state, level),
     towers: updateTowers(state, level),
   };
+}
+
+/**
+ * Helper function to update all enemies for the level
+ *
+ * @private
+ * @argument {import('../../data/initial-state.js').State} state
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @returns {Array<import('../../data/initial-state.js').Enemy>}
+ */
+function updateEnemies (state, level) {
+  return level.enemies.map((enemy) => {
+    return updateEnemy(state, level, enemy);
+  });
+}
+
+/**
+ * Helper function to update a single enemy of the level
+ *
+ * @private
+ * @argument {import('../../data/initial-state.js').State} state
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @argument {import('../../data/initial-state.js').Enemy} enemy
+ * @returns {import('../../data/initial-state.js').Enemy}
+ */
+function updateEnemy (state, level, enemy) {
+  if (isPlayerDefender(state, level)) {
+    return {
+      ...enemy,
+      ...pickRandomEntity(state, level.mode),
+    }
+  }
+
+  // Controlled by player, so don't touch it
+  return enemy;
 }
 
 /**
@@ -82,7 +118,7 @@ function updateTower (state, level, tower) {
 
   return {
     ...tower,
-    icon: pickRandomIcon(state, level.mode),
+    ...pickRandomEntity(state, level.mode),
   };
 }
 
@@ -92,14 +128,14 @@ function updateTower (state, level, tower) {
  * @private
  * @argument {import('../../data/initial-state.js').State} state
  * @argument {import('../../data/initial-state.js').Level['mode']} mode
- * @returns {import('../../data/initial-state.js').Tower['icon']}
+ * @returns {import('../../data/initial-state.js').Entity}
  */
-function pickRandomIcon (state, mode) {
+function pickRandomEntity (state, mode) {
   if (mode === 'life') {
-    return pickRandomFromArray(state.entities.death).icon;
+    return pickRandomFromArray(state.entities.death);
   }
 
-  return pickRandomFromArray(state.entities.life).icon;
+  return pickRandomFromArray(state.entities.life);
 }
 
 /**

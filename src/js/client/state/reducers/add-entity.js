@@ -35,20 +35,43 @@ function updateLevel (state, level, payload) {
   // FIXME: This is a hack. I have some knot in my mind to why I look it up
   // this way right now
   const side = party === 'death' ? 'life' : 'death';
-  const entity = state.entities[ party ].find((e) => e.icon === entityIcon)
-    || state.entities[ side ].find((e) => e.icon === entityIcon);
+  const entities = state.entities[ party ].concat(state.entities[ side ]);
+  const entity = entities.find((e) => e.icon === entityIcon);
 
-  const attackOrDefend = isPlayerDefender(state, level) ? 'defend' : 'attack';
-
-  if (attackOrDefend === 'attack') {
-    return {
-      ...level,
-      // TODO: From the perspective of tsc, entity could be undefined
-      // @ts-ignore
-      enemies: updateEnemies(level, entity),
-    };
+  if (isPlayerDefender(state, level)) {
+    return updateLevelForDefender(level, entity, index);
   }
 
+  return updateLevelForAttacker(level, entity);
+}
+
+/**
+ * Helper function to update the level for an attacking player
+ *
+ * @private
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @argument {import('../../data/initial-state.js').Entity | undefined} entity
+ * @returns {import('../../data/initial-state.js').Level}
+ */
+function updateLevelForAttacker (level, entity) {
+  return {
+    ...level,
+    // TODO: From the perspective of tsc, entity could be undefined
+    // @ts-ignore
+    enemies: updateEnemies(level, entity),
+  };
+}
+
+/**
+ * Helper function to update the level for an defending player
+ *
+ * @private
+ * @argument {import('../../data/initial-state.js').Level} level
+ * @argument {import('../../data/initial-state.js').Entity | undefined} entity
+ * @argument {number} index
+ * @returns {import('../../data/initial-state.js').Level}
+ */
+function updateLevelForDefender (level, entity, index) {
   return {
     ...level,
     // TODO: From the perspective of tsc, entity could be undefined

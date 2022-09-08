@@ -16,13 +16,11 @@
   "towers": [{
     "icon": null,
     "position": [  28,  44 ],
-    "radius": 2,
-    "type": null
+    "radius": 2
   }, {
     "icon": null,
     "position": [  36,  52 ],
-    "radius": 2,
-    "type": null
+    "radius": 2
   }]
 }, {
   "begin": null,
@@ -42,12 +40,10 @@
   "towers": [{
     "icon": null,
     "position": [  30,  44 ],
-    "radius": 4,
-    "type": null
+    "radius": 4
   }, {
     "icon": null,
     "position": [  36,  50 ],
-    "radius": 4,
-    "type": null
+    "radius": 4
   }]
 }]
