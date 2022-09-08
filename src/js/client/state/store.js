@@ -55,7 +55,7 @@ class Store {
 	 */
 	_hydrateFromWebStorage () {
 		try {
-			const state = localStorage.getItem(STORAGE_KEY);
+			const state = window.localStorage.getItem(STORAGE_KEY);
 			if (state !== null) {
 				this.state = JSON.parse(state);
 			}
@@ -71,7 +71,7 @@ class Store {
 	 */
 	_saveStateToWebStorage () {
 		try {
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.getState()));
+			window.localStorage.setItem(STORAGE_KEY, JSON.stringify(this.getState()));
 		} catch (exc) {
 			console.error('Could not save state because', exc);
 		}

@@ -10,7 +10,7 @@
     "postbuild": "yarn zip",
     "posttest": "yarn tsd",
     "predeploy": "yarn build",
-    "test": "mocha --recursive ./src/js/**/*.spec.js",
+    "test": "mocha --require ./require.js --recursive ./src/js/**/*.spec.js",
     "tsc": "tsc",
     "tsd": "tsd",
     "types": "tsc --noEmit false --emitDeclarationOnly true",
