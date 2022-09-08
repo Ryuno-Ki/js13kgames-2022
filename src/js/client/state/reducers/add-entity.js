@@ -11,9 +11,9 @@ export function addEntity (state, payload) {
   const levels = state.levels.map((level, index) => {
     if (index === state.activeLevel) {
       return updateLevel(state, level, payload);
-    } else {
-      return level;
     }
+
+    return level;
   });
 
   return Object.assign({}, state, { levels });
@@ -90,15 +90,21 @@ function updateLevelForDefender (level, entity, index) {
  */
 function updateEnemies (level, entity) {
   const [ x, y ] = level.pathway[ 0 ];
+  const firstUnInitialised = level.enemies.findIndex((enemy) => {
+    return enemy.begin === null;
+  });
 
-  return [
-    ...level.enemies,
-    {
-      ...entity,
-      begin: Date.now().valueOf(),
-      position: [ x, y ],
+  return level.enemies.map((enemy, index) => {
+    if (index === firstUnInitialised) {
+      return {
+        ...enemy,
+        ...entity,
+        begin: Date.now().valueOf(),
+        position: [ x, y ],
+      };
     }
-  ];
+    return enemy;
+  });
 }
 
 /**

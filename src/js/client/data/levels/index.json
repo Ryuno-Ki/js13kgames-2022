@@ -4,7 +4,22 @@
   "width": 320,
   "mode": "life",
   "maxEnemies": 3,
-  "enemies": [],
+  "enemies": [{
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }],
   "pathway": [
     [   0,  50 ],
     [  30,  50 ],
@@ -28,7 +43,32 @@
   "width": 320,
   "mode": "death",
   "maxEnemies": 5,
-  "enemies": [],
+  "enemies": [{
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }, {
+    "begin": null,
+    "icon": null,
+    "position": [ 0, 50 ],
+    "radius": 2
+  }],
   "pathway": [
     [   0,  50 ],
     [  30,  50 ],
