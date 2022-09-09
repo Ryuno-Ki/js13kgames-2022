@@ -13,13 +13,14 @@ import { defendComponent } from './components/defend.js';
 import { enemiesComponent } from './components/enemies.js';
 import { formComponent } from './components/form.js';
 import { levelComponent } from './components/level.js';
+import { mastodonShareComponent } from './components/mastodon-share.js';
 import { pathwayComponent } from './components/pathway.js';
 import { towersComponent } from './components/towers.js';
 import { wrapperComponent } from './components/wrapper.js';
 
-import { onChange } from './on-change';
-import { onClick } from './on-click';
-import { onKeydown } from './on-keydown';
+import { onChange } from './on-change.js';
+import { onClick } from './on-click.js';
+// import { onKeydown } from './on-keydown.js';
 
 import { add } from './registry.js';
 import { step } from './render.js';
@@ -35,6 +36,7 @@ export function init () {
   add('level', levelComponent);
   add('level-editor-scene', levelEditorSceneComponent);
   add('level-scene', levelSceneComponent);
+  add('mastodon-share', mastodonShareComponent);
   add('new-game-scene', newGameSceneComponent);
   add('pathway', pathwayComponent);
   add('settings-scene', settingsSceneComponent);
@@ -47,5 +49,5 @@ export function init () {
 
   document.body.addEventListener('change', onChange);
   document.body.addEventListener('click', onClick);
-  document.body.addEventListener('keydown', onKeydown);
+  //document.body.addEventListener('keydown', onKeydown);
 }

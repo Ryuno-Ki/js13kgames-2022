@@ -3,6 +3,7 @@ import { addCoordinate } from './state/actions/add-coordinate.js';
 import { navigateToScene } from './state/actions/navigate-to-scene.js';
 import { saveDraft } from './state/actions/save-draft.js';
 import store from './state/store.js';
+import { mastodonShare } from './mastodon-share.js';
 
 /**
  * Event handler for click events
@@ -13,9 +14,9 @@ export function onClick (event) {
   const target = /** @type {HTMLElement} */(event.target);
 
   if (target && target.dataset) {
-		if (target.dataset.action) {
-			return store.dispatch(saveDraft());
-		}
+    if (target.dataset.action) {
+      return store.dispatch(saveDraft());
+    }
 
     if (target.dataset.addEntity) {
       return store.dispatch(
@@ -29,6 +30,10 @@ export function onClick (event) {
           /** @type {import('./components/wrapper.js').Scene} */(target.dataset.navigate)
         )
       );
+    }
+
+    if (target.dataset.share) {
+      return mastodonShare(target.dataset.share, store.getState().mastodon);
     }
 
     maybeHandleDraftLevel(event);

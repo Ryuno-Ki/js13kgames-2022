@@ -78,6 +78,7 @@ import levels from './levels/index.json' assert {type: 'json'};
  * @property {boolean} hasWon
  * @property {DraftLevel} levelDraft
  * @property {Array<Level>} levels
+ * @property {string} mastodon
  * @property {Player} player
  * @property {object} settings
  * @property {boolean} settings.prefersReducedMotion
@@ -99,6 +100,7 @@ export const initialState = {
   },
   levelDraft: /** @type {DraftLevel} */(levelDraft),
   levels: /** @type {Array<Level>} */(levels),
+  mastodon: 'https://layer8.space',
   player: {
     life: 1,
     nickname: null,

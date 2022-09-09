@@ -11,8 +11,16 @@ export function winSceneComponent (targetElement, state) {
   if (state.activeScene !== 'win-scene') {
     element.innerHTML = '';
   } else {
-	  element.innerHTML = 'Win scene';
+    element.innerHTML = `
+      <p>You won!</p>
+      <div data-component="mastodon-share"></div>
+      <nav class="actions">
+        <button type="button" data-navigate="title-scene">
+          Play another time
+        </button>
+      </nav>
+    `;
   }
 
-	return element;
+  return element;
 }

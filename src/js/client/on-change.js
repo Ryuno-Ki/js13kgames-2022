@@ -19,6 +19,8 @@ export function onChange (event) {
     switch (target.id) {
       case 'activeLevel':
         return store.dispatch(chooseLevel(target.value));
+      case 'mastodon-instance':
+        return store.dispatch(setMastodonInstance(target.value));
       case 'maxEnemies':
         return store.dispatch(setDraftLevelMaxEnemies(target.value));
       case 'mode':

@@ -11,6 +11,7 @@ import {
   ACTION_SAVE_DRAFT,
   ACTION_SET_DRAFT_LEVEL_MAX_ENEMIES,
   ACTION_SET_DRAFT_LEVEL_MODE,
+  ACTION_SET_MASTODON_INSTANCE,
   ACTION_SET_MOTION_PREFERENCE,
   ACTION_SET_NICKAME,
   ACTION_SET_PLACEMENT_MODE,
@@ -28,6 +29,7 @@ import { navigateToScene } from './navigate-to-scene.js';
 import { saveDraft } from './save-draft.js';
 import { setDraftLevelMaxEnemies } from './set-draft-level-max-enemies.js';
 import { setDraftLevelMode } from './set-draft-level-mode.js';
+import { setMastodonInstance } from './set-mastodon-instance.js';
 import { setMotionPreference } from './set-motion-preference.js';
 import { setNickname } from './set-nickname.js';
 import { setPlacementMode } from './set-placement-mode.js';
@@ -35,7 +37,7 @@ import { updatePositions } from './update-positions.js';
 import { updateRadii } from './update-radii.js';
 
 /**
- * @typedef {import('../actions/add-entity.js').Action | import('../actions/add-coordinate.js').Action | import('../actions/check-collisions.js').Action | import('../actions/check-loose-condition.js').Action | import('../actions/check-win-condition.js').Action | import('../actions/choose-level.js').Action | import('../actions/choose-party.js').Action | import('../actions/navigate-to-scene.js').Action | import('../actions/save-draft.js').Action | import('../actions/set-draft-level-max-enemies.js').Action | import('../actions/set-draft-level-mode.js').Action | import('../actions/set-motion-preference.js').Action | import('../actions/set-nickname.js').Action | import('../actions/set-placement-mode.js').Action | import('../actions/update-positions.js').Action | import('../actions/update-radii.js').Action} Action
+ * @typedef {import('../actions/add-entity.js').Action | import('../actions/add-coordinate.js').Action | import('../actions/check-collisions.js').Action | import('../actions/check-loose-condition.js').Action | import('../actions/check-win-condition.js').Action | import('../actions/choose-level.js').Action | import('../actions/choose-party.js').Action | import('../actions/navigate-to-scene.js').Action | import('../actions/save-draft.js').Action | import('../actions/set-draft-level-max-enemies.js').Action | import('../actions/set-draft-level-mode.js').Action | import('../actions/set-mastodon-instance.js').Action | import('../actions/set-motion-preference.js').Action | import('../actions/set-nickname.js').Action | import('../actions/set-placement-mode.js').Action | import('../actions/update-positions.js').Action | import('../actions/update-radii.js').Action} Action
  */
 
 /**
@@ -71,6 +73,8 @@ export function reducer (state = initialState, action) {
       return setDraftLevelMaxEnemies(state, payload);
     case ACTION_SET_DRAFT_LEVEL_MODE:
       return setDraftLevelMode(state, payload);
+    case ACTION_SET_MASTODON_INSTANCE:
+      return setMastodonInstance(state, payload);
     case ACTION_SET_MOTION_PREFERENCE:
       return setMotionPreference(state, payload);
     case ACTION_SET_NICKAME:
