@@ -11,7 +11,7 @@ import store from './state/store.js';
 /**
  * A single step that calls itself via requestAnimationFrame
  */
-export function step () {
+export async function step () {
   const main = /** @type {HTMLElement} */(document.querySelector(APP_SELECTOR));
 
   if (!main) {
@@ -21,11 +21,11 @@ export function step () {
   const newMain = componentRegistry.render(main, store.getState());
   applyToDOM(document.body, main, newMain);
 
-  store.dispatch(updatePositions());
-  store.dispatch(updateRadii());
-	store.dispatch(checkCollisions());
-  store.dispatch(checkLooseCondition());
-  store.dispatch(checkWinCondition());
+  await store.dispatch(updatePositions());
+  await store.dispatch(updateRadii());
+	await store.dispatch(checkCollisions());
+  await store.dispatch(checkLooseCondition());
+  await store.dispatch(checkWinCondition());
 
   requestAnimationFrame(step);
 }
