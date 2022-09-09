@@ -1,14 +1,16 @@
+import { STORAGE_KEY } from './constants.js';
+import { mastodonShare } from './mastodon-share.js';
 import { addEntity } from './state/actions/add-entity.js';
 import { addCoordinate } from './state/actions/add-coordinate.js';
 import { navigateToScene } from './state/actions/navigate-to-scene.js';
 import { saveDraft } from './state/actions/save-draft.js';
 import store from './state/store.js';
-import { mastodonShare } from './mastodon-share.js';
 
 /**
  * Event handler for click events
  *
  * @argument {MouseEvent} event
+ * @returns {void | Promise<void>}
  */
 export function onClick (event) {
   const target = /** @type {HTMLElement} */(event.target);
@@ -22,6 +24,10 @@ export function onClick (event) {
       return store.dispatch(
         addEntity(target.dataset.addEntity, target.dataset.index || '')
       );
+    }
+
+    if (target.dataset.clear) {
+      return localStorage.removeItem(STORAGE_KEY);
     }
 
     if (target.dataset.navigate) {

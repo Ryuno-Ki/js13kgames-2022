@@ -40,6 +40,14 @@ export function settingsSceneComponent (targetElement, state) {
           No
         </label>
       </fieldset>
+      <fieldset>
+        <legend>
+          Storage
+        </legend>
+        <button id="clear-storage" type="button" data-clear="storage">
+          Clear storage
+        </button>
+      </fieldset>
       <nav class="actions">
         <button type="button" data-navigate="title-scene">Back to title</button>
       </nav>
