@@ -15,6 +15,12 @@ export function aboutSceneComponent (targetElement, state) {
       <h2>About</h2>
       <p>This game is released under AGPL v3 or newer license.</p>
       <p>
+        Mastodon share is implemented similar to
+        <a href="https://github.com/Aly-ve/Mastodon-share-button">
+          Mastodon-share-button
+        </a>.
+      </p>
+      <p>
         You can find the source code and more at
         <a href="https://jaenis.ch/hobbies/coding/repos/ryuno-ki/js13kgames-2022">
           my Gitea instance
