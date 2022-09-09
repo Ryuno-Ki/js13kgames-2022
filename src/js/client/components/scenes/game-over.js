@@ -11,7 +11,14 @@ export function gameOverSceneComponent (targetElement, state) {
   if (state.activeScene !== 'game-over-scene') {
     element.innerHTML = '';
   } else {
-	  element.innerHTML = 'Game over scene';
+    element.innerHTML = `
+      <h2>Game over</h2>
+      <nav class="actions">
+        <button type="button" data-navigate="title-scene">
+          Try again
+        </button>
+      </nav>
+    `;
   }
 
 	return element;
