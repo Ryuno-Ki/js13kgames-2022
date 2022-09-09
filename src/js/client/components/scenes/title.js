@@ -20,7 +20,9 @@ export function titleSceneComponent (targetElement, state) {
       </h1>
       <nav class="actions">
         <button type="button" data-navigate="new-game-scene">New Game</button>
-        <button type="button" data-navigate="level-editor-scene">Level Editor</button>
+        <button type="button" data-navigate="level-editor-scene">
+          Level Editor
+        </button>
         <button type="button" data-navigate="settings-scene">Settings</button>
         <button type="button" data-navigate="about-scene">About</button>
       </nav>

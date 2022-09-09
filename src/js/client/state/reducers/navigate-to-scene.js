@@ -1,4 +1,5 @@
 import { isPlayerDefender, pickLevel } from '../../components/helper.js';
+import { initialState } from '../../data/initial-state.js';
 
 /**
  * Reducer to update the state with the active scene.
@@ -24,7 +25,12 @@ export function navigateToScene (state, payload) {
  * @returns {Array<import('../../data/initial-state.js').Level>}
  */
 function updateLevels (state, scene) {
-  const levels = state.levels.map(function (level) {
+  const levels = state.levels.map(function (level, index) {
+    if (scene === 'title-scene') {
+      // Reset level
+      return Object.assign({}, initialState.levels[ index ]);
+    }
+
     if (scene === 'level-scene') {
       return updateLevel(state, level);
     }
@@ -158,6 +164,10 @@ function pickRandomFromArray (array) {
  * @returns {import('../../data/initial-state.js').Player}
  */
 function updatePlayer (state, scene) {
+  if (scene === 'title-scene') {
+    return Object.assign({}, initialState.player);
+  }
+
   if (scene !== 'level-scene') {
     return state.player;
   }

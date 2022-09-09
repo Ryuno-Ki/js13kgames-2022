@@ -23,7 +23,7 @@ export async function step () {
 
   await store.dispatch(updatePositions());
   await store.dispatch(updateRadii());
-	await store.dispatch(checkCollisions());
+  await store.dispatch(checkCollisions());
   await store.dispatch(checkLooseCondition());
   await store.dispatch(checkWinCondition());
 
